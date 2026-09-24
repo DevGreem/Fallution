@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="PalettePluginSaveData" format=3 uid="uid://m47khe5hfhbi"]
+
+[ext_resource type="Script" uid="uid://bfm64dhei0kba" path="res://addons/scene_palette/resources/rsc_pallete_plugin_save_data.gd" id="1_tuhxn"]
+
+[resource]
+script = ExtResource("1_tuhxn")
+favorites = {
+"res://scenes/characters/enemies/bots": {
+&"color": "#0e1521",
+"flattened_dirs": {
+"res://scenes/characters/enemies/bots/sekuri": null,
+"res://scenes/characters/enemies/bots/terrecean": null
+},
+&"flattened_subdirs": {},
+&"image_preview_dir": "res://data/art",
+&"minimized_dirs": {
+"res://scenes/characters/enemies/bots/guards": null,
+"res://scenes/characters/enemies/bots/sekuri": null
+},
+&"mode": 1,
+&"scene_preview_scale": 1,
+&"show_labels": true
+},
+"res://scenes/components/decorations": {
+&"color": "#0e1521",
+"flattened_dirs": {
+"res://scenes/components/decorations/doors": null,
+"res://scenes/components/decorations/interior-decor": null,
+"res://scenes/components/decorations/outdoor": null
+},
+&"flattened_subdirs": {},
+&"image_preview_dir": "res://data/art",
+&"minimized_dirs": {},
+&"mode": 1,
+&"scene_preview_scale": 1,
+&"show_labels": true
+},
+"res://scenes/components/interactable-components": {
+&"color": "#0e1521",
+"flattened_dirs": {},
+&"flattened_subdirs": {},
+&"image_preview_dir": "res://data/art",
+&"minimized_dirs": {},
+&"mode": 1,
+&"scene_preview_scale": 1,
+&"show_labels": true
+}
+}
