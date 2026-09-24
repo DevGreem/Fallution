@@ -16,8 +16,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameDebugger="*uid://xodsxgpsskk2"
 LivePaletteRuntime="*uid://d31r5bjbh1oer"
 PhantomCameraManager="*uid://duq6jhf6unyis"
+ComponentManager="*uid://dhg8bupj1ups7"
+TransitionManager="*uid://cno4wejckrna6"
+ScenesManager="*uid://qqccb5c6n424"
+AudioManager="*uid://dsxatc6se2tjn"
 
 [debug]
 
