@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dewf1w3n8o071"]
 
-[ext_resource type="Script" uid="uid://dqtvwbnj8vw38" path="res://content/machines/shop_machine.gd" id="1_ayfjj"]
+[ext_resource type="Script" uid="uid://dqtvwbnj8vw38" path="res://content/machines/shop/shop_machine.gd" id="1_ayfjj"]
 [ext_resource type="Script" uid="uid://dk0pi828tayhh" path="res://components/interaction_system/interact_area_2d.gd" id="2_bfnrc"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_obaep"]
@@ -17,6 +17,8 @@ position = Vector2(0, -8)
 texture = SubResource("PlaceholderTexture2D_obaep")
 
 [node name="InteractArea2D" type="Area2D" parent="." unique_id=635180065]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("2_bfnrc")
 metadata/_custom_type_script = "uid://dk0pi828tayhh"
 

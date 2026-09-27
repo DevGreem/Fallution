@@ -68,5 +68,7 @@ func spawn_leaf(leaf: LeafInfo) -> void:
 	node.global_position = pos
 	node.rotation_degrees = randi_range(-180, 180)
 	
+	node.value = GlobalBuffManager.get_final_value(LeafValue.new(), node.value)
+	
 	var container := SpawnManager2D.get_container(ContainerType.Enum.ENTITIES)
 	container.add_child(node)

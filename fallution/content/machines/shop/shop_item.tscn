@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c1jmh3jdr1f2"]
+
+[ext_resource type="Script" uid="uid://caaqshfbwbxnx" path="res://components/shop_system/shop_item_node.gd" id="1_tc3di"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_53wvu"]
+
+[node name="ShopItem" type="HBoxContainer" unique_id=551820757 node_paths=PackedStringArray("texture", "title", "description")]
+custom_minimum_size = Vector2(0, 16)
+custom_maximum_size = Vector2(-1, 16)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_tc3di")
+texture = NodePath("TextureRect")
+title = NodePath("VBoxContainer/Title")
+description = NodePath("VBoxContainer/Description")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1161005985]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_53wvu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1936452627]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=566107121]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 4
+text = "Test Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="VBoxContainer" unique_id=2000285105]
+layout_mode = 2
+theme_override_font_sizes/font_size = 3
+text = "Test Description"
+
+[node name="Button" type="Button" parent="." unique_id=548234059]
+layout_mode = 2
+text = "Buy"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

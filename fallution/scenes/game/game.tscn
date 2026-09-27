@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_kelw5"]
 [ext_resource type="Script" uid="uid://b5bqemwvwy42k" path="res://components/spawn_system/containers/global_spawn_container_2d.gd" id="4_bdhmt"]
 [ext_resource type="Script" uid="uid://cjk6gm6364kmt" path="res://scripts/leafs_spawner.gd" id="6_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://dewf1w3n8o071" path="res://content/machines/shop/shop.tscn" id="8_87uf6"]
+[ext_resource type="Script" uid="uid://irjvxq7y563y" path="res://components/shop_system/resources/shop_inventory.gd" id="9_2a8rs"]
 
 [sub_resource type="Resource" id="Resource_lfrn8"]
 script = ExtResource("3_kelw5")
@@ -17,13 +19,21 @@ size = Vector2(279, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g04yl"]
 size = Vector2(66, 26)
 
+[sub_resource type="Resource" id="Resource_53wvu"]
+script = ExtResource("9_2a8rs")
+metadata/_custom_type_script = "uid://irjvxq7y563y"
+
 [node name="Game" type="Node2D" unique_id=666580704]
 
-[node name="UIRoot" type="Control" parent="." unique_id=723055159]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=78591326]
+
+[node name="UIRoot" type="Control" parent="CanvasLayer" unique_id=723055159]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_bdhmt")
 metadata/_custom_type_script = "uid://5eysrwqfki0n"
 
@@ -81,3 +91,7 @@ debug_color = Color(0.9529412, 0.26666668, 0, 0.41960785)
 metadata/_live_palette_bindings = {
 "debug_color": "53wvu"
 }
+
+[node name="Shop" parent="." unique_id=1214214263 instance=ExtResource("8_87uf6")]
+position = Vector2(-7, 5)
+inventory = SubResource("Resource_53wvu")

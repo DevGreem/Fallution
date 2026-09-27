@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://clo47v5yf60c6"]
+
+[ext_resource type="Script" uid="uid://bf0d7fptavq4q" path="res://components/shop_system/shop_ui.gd" id="1_kju2s"]
+[ext_resource type="PackedScene" uid="uid://c1jmh3jdr1f2" path="res://content/machines/shop/shop_item.tscn" id="2_hxnt7"]
+
+[node name="ShopUI" type="Control" unique_id=2058676756 node_paths=PackedStringArray("items_container")]
+custom_minimum_size = Vector2(100, 65)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_kju2s")
+items_container = NodePath("Items")
+shop_item_ui = ExtResource("2_hxnt7")
+
+[node name="Panel" type="Panel" parent="." unique_id=1496481754]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Items" type="VBoxContainer" parent="." unique_id=1798916927]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0

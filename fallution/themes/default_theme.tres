@@ -1,3 +1,5 @@
 [gd_resource type="Theme" format=3 uid="uid://boomxoj1kx0rg"]
 
 [resource]
+Button/font_sizes/font_size = 5
+Label/font_sizes/font_size = 5

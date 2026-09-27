@@ -39,6 +39,28 @@ func get_component(node: Node, type: Variant, internal: bool = false, use_cache:
 	_cache.storage_manager().add_component_cache(node, type, null)
 	return null
 
+func has_component(node: Node, type: Variant, internal: bool = false, use_cache: bool = true) -> bool:
+	
+	if not is_instance_valid(node):
+		return false
+	
+	if use_cache:
+		
+		var cache: CacheStatusNode = _cache.getter_manager().get_component_cache(node, type)
+		
+		if cache.is_cached:
+			
+			var val: Node = cache.get_value()
+			
+			return is_instance_valid(val)
+	
+	for child: Node in node.get_children(internal):
+		
+		if is_instance_of(child, type):
+			return true
+	
+	return false
+
 func recursive_get_component(parent: Node, node: Node, type: Variant, internal: bool = false, use_cache: bool = true) -> Node:
 	
 	if not is_instance_valid(parent) or not is_instance_valid(node):
@@ -66,6 +88,32 @@ func recursive_get_component(parent: Node, node: Node, type: Variant, internal: 
 	
 	_cache.storage_manager().add_component_cache(node, type, null)
 	return null
+
+func recursive_has_component(parent: Node, node: Node, type: Variant, internal: bool = false, use_cache: bool = true) -> bool:
+	
+	if not is_instance_valid(parent) or not is_instance_valid(node):
+		return false
+	
+	if use_cache:
+		var cache: CacheStatusNode = _cache.getter_manager().get_component_cache(node, type)
+		
+		if cache.is_cached:
+			
+			var val: Node = cache.get_value()
+			
+			return is_instance_valid(val)
+	
+	for child: Node in node.get_children(internal):
+		
+		if is_instance_of(child, type):
+			return true
+		
+		var ans: bool = recursive_has_component(parent, child, type, internal, use_cache)
+		
+		if ans:
+			return ans
+	
+	return false
 
 func get_component_array(node: Node, type: Variant, internal: bool = false, use_cache: bool = true) -> Array[Node]:
 	
