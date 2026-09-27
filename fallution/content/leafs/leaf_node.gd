@@ -1,9 +1,10 @@
-extends CharacterBody2D
+@icon("res://addons/at-icons/node2d/leaf.svg")
+extends Node2D
 
 class_name LeafNode
 
 @export var get_leaf_interaction: InteractArea2D
-
+@export var value: float
 
 func _ready() -> void:
 	

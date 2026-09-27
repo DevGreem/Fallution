@@ -6,12 +6,14 @@ class_name LivePalette
 ## through the LivePaletteRuntime autoload, which re-applies bound properties.
 const INTERACTIONS := Color(0.8352941, 0.8039216, 0.007843138, 0.41960785)
 const INTERACTORS := Color(0.8901961, 0.5647059, 0.007843138, 0.41960785)
+const SPAWN := Color(0.9529412, 0.26666668, 0, 0.41960785)
 
 ## Palette name -> color, for lookups by a name held in a variable.
 ## Prefer the constants above: they are checked at compile time.
 const BY_NAME := {
 	"Interactions": INTERACTIONS,
 	"Interactors": INTERACTORS,
+	"Spawn": SPAWN,
 }
 
 ## Variant name -> {name -> color}, for reading a variant you are not on.
@@ -19,6 +21,7 @@ const VARIANTS := {
 	"Default": {
 		"Interactions": Color(0.8352941, 0.8039216, 0.007843138, 0.41960785),
 		"Interactors": Color(0.8901961, 0.5647059, 0.007843138, 0.41960785),
+		"Spawn": Color(0.9529412, 0.26666668, 0, 0.41960785),
 	},
 }
 

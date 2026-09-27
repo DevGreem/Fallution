@@ -2,56 +2,72 @@
 
 [ext_resource type="Script" uid="uid://c40i8oy8fnm03" path="res://content/leafs/leaf_node.gd" id="1_dqrru"]
 [ext_resource type="Texture2D" uid="uid://5wb5dvx1pfbg" path="res://content/leafs/test_leaf/test_leaf.png" id="1_o36lm"]
-[ext_resource type="Script" uid="uid://cshnmf0olen85" path="res://components/move_system/gravity_component_2d.gd" id="2_25okp"]
-[ext_resource type="Script" uid="uid://bx4k8y0s0wbmn" path="res://components/move_system/character_mover_2d.gd" id="2_vxfs1"]
+[ext_resource type="Texture2D" uid="uid://32m8gyd0htv2" path="res://content/leafs/test_leaf/test_leaf_tail.png" id="4_dqrru"]
 [ext_resource type="Script" uid="uid://dk0pi828tayhh" path="res://components/interaction_system/interact_area_2d.gd" id="4_mljrg"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obaep"]
-radius = 2.0
-height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g04yl"]
 radius = 3.0
 height = 14.0
 
-[node name="TestLeaf" type="CharacterBody2D" unique_id=447771212 node_paths=PackedStringArray("get_leaf_interaction") groups=["entities"]]
-collision_layer = 0
-script = ExtResource("1_dqrru")
-get_leaf_interaction = NodePath("GetLeafInteractionArea")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
+size = Vector2(5, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1850299443]
-position = Vector2(0, -4)
+[node name="TestLeaf" type="Node2D" unique_id=1958364646 node_paths=PackedStringArray("get_leaf_interaction") groups=["entities", "leafs"]]
+script = ExtResource("1_dqrru")
+get_leaf_interaction = NodePath("LeafBody/GetLeafInteractionArea")
+value = 1.0
+
+[node name="LeafBody" type="RigidBody2D" parent="." unique_id=1369390924]
+collision_layer = 16
+collision_mask = 17
+gravity_scale = 0.1
+linear_damp = 1.5
+angular_velocity = 1.5707964
+angular_damp = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="LeafBody" unique_id=1850299443]
+z_index = -1
+position = Vector2(-1, -3)
 texture = ExtResource("1_o36lm")
 
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=268269955]
-position = Vector2(-1, -2)
-rotation = -1.5707964
-shape = SubResource("CapsuleShape2D_obaep")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeafBody" unique_id=2048312687]
+position = Vector2(2, 0)
+polygon = PackedVector2Array(-8, 0, -5, -3, -2, -4, 1, -2, 1, 0)
 
-[node name="CharacterMover2D" type="Node" parent="." unique_id=1947160041 node_paths=PackedStringArray("actor")]
-script = ExtResource("2_vxfs1")
-work_in_editor = true
-actor = NodePath("..")
-metadata/_custom_type_script = "uid://bx4k8y0s0wbmn"
-
-[node name="GravityComponent2D" type="Node" parent="." unique_id=919894912 node_paths=PackedStringArray("actor")]
-script = ExtResource("2_25okp")
-actor = NodePath("..")
-gravity_effect = 0.75
-metadata/_custom_type_script = "uid://cshnmf0olen85"
-
-[node name="GetLeafInteractionArea" type="Area2D" parent="." unique_id=443975021]
+[node name="GetLeafInteractionArea" type="Area2D" parent="LeafBody" unique_id=443975021]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("4_mljrg")
 interact_name = "get_leaf"
 metadata/_custom_type_script = "uid://dk0pi828tayhh"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GetLeafInteractionArea" unique_id=570095176]
-position = Vector2(-1, -2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafBody/GetLeafInteractionArea" unique_id=570095176]
+position = Vector2(0, -2)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_g04yl")
 debug_color = Color(0.8352941, 0.8039216, 0.007843138, 0.41960785)
 metadata/_live_palette_bindings = {
 "debug_color": "syjmg"
 }
+
+[node name="LeafTail" type="RigidBody2D" parent="." unique_id=71549262]
+collision_layer = 0
+gravity_scale = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="LeafTail" unique_id=2131982248]
+position = Vector2(6.5, -1.5)
+texture = ExtResource("4_dqrru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafTail" unique_id=1164327711]
+position = Vector2(6.5, -1.5)
+shape = SubResource("RectangleShape2D_obaep")
+debug_color = Color(0.9529412, 0.26666668, 0, 0.41960785)
+metadata/_live_palette_bindings = {
+"debug_color": "53wvu"
+}
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1371497650]
+position = Vector2(3.5, -1.5)
+node_a = NodePath("../LeafBody")
+node_b = NodePath("../LeafTail")
+disable_collision = false

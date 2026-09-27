@@ -7,6 +7,9 @@ class_name GravityComponent2D
 
 func _physics_process(delta: float) -> void:
 	
+	if not actor:
+		return
+	
 	if actor.is_on_floor():
 		return
 	

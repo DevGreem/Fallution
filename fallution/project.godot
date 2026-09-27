@@ -25,6 +25,8 @@ ScenesManager="*uid://qqccb5c6n424"
 AudioManager="*uid://dsxatc6se2tjn"
 PlayerManager="*uid://dst27tilrrgpj"
 GlobalBuffManager="*uid://2kvq0g2qoer5"
+SpawnManager2D="*uid://cbo65ipsnkm67"
+UIManager="*uid://dby5u3bvyp14j"
 
 [debug]
 
@@ -61,6 +63,7 @@ enabled=PackedStringArray("res://.godot/scenetime/plugin.cfg", "res://addons/at-
 [global_group]
 
 entities=""
+leafs=""
 
 [input]
 
@@ -81,6 +84,7 @@ right={
 2d_physics/layer_2="Entities"
 2d_physics/layer_3="LeafInteractions"
 2d_physics/layer_4="Interactions"
+2d_physics/layer_5="Leafs"
 
 [navigation]
 

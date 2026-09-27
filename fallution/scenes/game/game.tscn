@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://c3kqibhridxv2"]
 
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_0sr1o"]
+[ext_resource type="Script" uid="uid://5eysrwqfki0n" path="res://components/ui_system/ui_root.gd" id="1_bdhmt"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_kelw5"]
 [ext_resource type="PackedScene" uid="uid://dneqqlhtrjad7" path="res://content/entities/player/Player.tscn" id="1_sul5r"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_kelw5"]
-[ext_resource type="PackedScene" uid="uid://bi58kveh51x2b" path="res://content/leafs/test_leaf/test_leaf.tscn" id="5_lfrn8"]
+[ext_resource type="Script" uid="uid://b5bqemwvwy42k" path="res://components/spawn_system/containers/global_spawn_container_2d.gd" id="4_bdhmt"]
 [ext_resource type="Script" uid="uid://cjk6gm6364kmt" path="res://scripts/leafs_spawner.gd" id="6_5i0tg"]
 
 [sub_resource type="Resource" id="Resource_lfrn8"]
@@ -17,6 +18,14 @@ size = Vector2(279, 27)
 size = Vector2(66, 26)
 
 [node name="Game" type="Node2D" unique_id=666580704]
+
+[node name="UIRoot" type="Control" parent="." unique_id=723055159]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bdhmt")
+metadata/_custom_type_script = "uid://5eysrwqfki0n"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2107429055]
 physics_interpolation_mode = 1
@@ -49,18 +58,26 @@ offset_bottom = 32.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1760675953]
 position = Vector2(117.5, 18.5)
 shape = SubResource("RectangleShape2D_obaep")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
 
-[node name="Entities" type="Node2D" parent="." unique_id=594685710]
+[node name="Entities" type="Node2D" parent="." unique_id=1918495725]
+script = ExtResource("4_bdhmt")
+metadata/_custom_type_script = "uid://b5bqemwvwy42k"
 
 [node name="Player" parent="Entities" unique_id=173248088 instance=ExtResource("1_sul5r")]
 position = Vector2(87, -29)
 
-[node name="TestLeaf" parent="Entities" unique_id=447771212 instance=ExtResource("5_lfrn8")]
-position = Vector2(187, -48)
-
-[node name="LeafsSpawner" type="Area2D" parent="." unique_id=670866186]
+[node name="LeafsSpawner" type="Area2D" parent="." unique_id=670866186 node_paths=PackedStringArray("collision")]
 script = ExtResource("6_5i0tg")
+collision = NodePath("CollisionShape2D")
+spawn_time = 5.0
+spawn_cantity_range = Vector2i(1, 1)
+max_spawn_leafs = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeafsSpawner" unique_id=472423472]
 position = Vector2(189, -126)
 shape = SubResource("RectangleShape2D_g04yl")
+debug_color = Color(0.9529412, 0.26666668, 0, 0.41960785)
+metadata/_live_palette_bindings = {
+"debug_color": "53wvu"
+}
