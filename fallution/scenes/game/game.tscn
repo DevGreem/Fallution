@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dneqqlhtrjad7" path="res://content/entities/player/Player.tscn" id="1_sul5r"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_kelw5"]
 [ext_resource type="PackedScene" uid="uid://bi58kveh51x2b" path="res://content/leafs/test_leaf/test_leaf.tscn" id="5_lfrn8"]
+[ext_resource type="Script" uid="uid://cjk6gm6364kmt" path="res://scripts/leafs_spawner.gd" id="6_5i0tg"]
 
 [sub_resource type="Resource" id="Resource_lfrn8"]
 script = ExtResource("3_kelw5")
@@ -58,6 +59,7 @@ position = Vector2(87, -29)
 position = Vector2(187, -48)
 
 [node name="LeafsSpawner" type="Area2D" parent="." unique_id=670866186]
+script = ExtResource("6_5i0tg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeafsSpawner" unique_id=472423472]
 position = Vector2(189, -126)

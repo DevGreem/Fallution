@@ -4,6 +4,7 @@ class_name LeafNode
 
 @export var get_leaf_interaction: InteractArea2D
 
+
 func _ready() -> void:
 	
 	get_leaf_interaction.interacted.connect(_on_interact)

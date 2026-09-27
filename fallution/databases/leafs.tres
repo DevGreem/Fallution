@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Registry" format=3 uid="uid://b5ontlvcp1fft"]
+
+[ext_resource type="Script" uid="uid://dqtv77mng5dyh" path="res://addons/yard/registry.gd" id="1_gg3yy"]
+
+[resource]
+script = ExtResource("1_gg3yy")
+_version = 2
+_scan_rulesets = Array[Dictionary]([{
+&"allowed_file_extensions": Array[String]([]),
+&"class_restrictions": Array[StringName]([&"LeafInfo"]),
+&"recursive_scan": true,
+&"scan_directories": Array[String](["res://content/leafs"]),
+&"scan_regex_exclude": "",
+&"scan_regex_include": ""
+}])
+_uids_to_string_ids = Dictionary[StringName, StringName]({
+&"uid://bbhlc2mgpt2vw": &"test_leaf"
+})
+_string_ids_to_uids = Dictionary[StringName, StringName]({
+&"test_leaf": &"uid://bbhlc2mgpt2vw"
+})
+_property_index = Dictionary[StringName, Dictionary]({
+&"id": {
+"test_leaf": {
+&"test_leaf": true
+}
+},
+&"name": {
+"Test Leaf": {
+&"test_leaf": true
+}
+},
+&"value": {
+1.0: {
+&"test_leaf": true
+}
+}
+})

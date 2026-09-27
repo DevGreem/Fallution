@@ -56,7 +56,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/at-icons/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/live_palette/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/scene_palette/plugin.cfg")
+enabled=PackedStringArray("res://.godot/scenetime/plugin.cfg", "res://addons/at-icons/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/live_palette/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/scene_palette/plugin.cfg", "res://addons/yard/plugin.cfg")
 
 [global_group]
 
