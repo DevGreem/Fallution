@@ -1,4 +1,4 @@
-extends Node
+extends InputComponent
 
 class_name MoveInputComponent2D
 

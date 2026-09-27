@@ -6,12 +6,11 @@ class_name InputComponent
 @warning_ignore("unused_signal")
 signal input_detected
 
-@export var original_process: Node.ProcessMode
-@export var actor: Node2D
+@export var ignore_manager: bool = false
+
+var original_process: Node.ProcessMode
 var is_active: bool:
 	get: return self.process_mode != PROCESS_MODE_DISABLED
-
-@export var ignore_manager: bool = false
 
 func _ready() -> void:
 	original_process = self.process_mode

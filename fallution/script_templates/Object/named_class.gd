@@ -1,0 +1,3 @@
+extends _BASE_
+
+class_name _CLASS_

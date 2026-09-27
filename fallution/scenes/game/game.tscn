@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c3kqibhridxv2"]
+
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_0sr1o"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_kelw5"]
+[ext_resource type="PackedScene" uid="uid://dneqqlhtrjad7" path="res://content/entities/player/Player.tscn" id="1_sul5r"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_kelw5"]
+[ext_resource type="PackedScene" uid="uid://bi58kveh51x2b" path="res://content/leafs/test_leaf/test_leaf.tscn" id="5_lfrn8"]
+
+[sub_resource type="Resource" id="Resource_lfrn8"]
+script = ExtResource("3_kelw5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
+size = Vector2(279, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g04yl"]
+size = Vector2(66, 26)
+
+[node name="Game" type="Node2D" unique_id=666580704]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2107429055]
+physics_interpolation_mode = 1
+top_level = true
+position = Vector2(87, -29)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1057659521]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_kelw5")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=2028074154 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(87, -29)
+script = ExtResource("1_0sr1o")
+follow_mode = 2
+follow_target = NodePath("../Entities/Player")
+tween_resource = SubResource("Resource_lfrn8")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1718823344]
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=1593287585]
+offset_left = -22.0
+offset_top = 5.0
+offset_right = 257.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1760675953]
+position = Vector2(117.5, 18.5)
+shape = SubResource("RectangleShape2D_obaep")
+
+[node name="Entities" type="Node2D" parent="." unique_id=594685710]
+
+[node name="Player" parent="Entities" unique_id=173248088 instance=ExtResource("1_sul5r")]
+position = Vector2(87, -29)
+
+[node name="TestLeaf" parent="Entities" unique_id=447771212 instance=ExtResource("5_lfrn8")]
+position = Vector2(187, -48)
+
+[node name="LeafsSpawner" type="Area2D" parent="." unique_id=670866186]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafsSpawner" unique_id=472423472]
+position = Vector2(189, -126)
+shape = SubResource("RectangleShape2D_g04yl")

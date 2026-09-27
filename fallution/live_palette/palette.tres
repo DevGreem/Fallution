@@ -4,4 +4,17 @@
 
 [resource]
 script = ExtResource("1_53wvu")
+entries = Array[Dictionary]([{
+"colors": {
+"Default": Color(0.8352941, 0.8039216, 0.007843138, 0.41960785)
+},
+"id": "syjmg",
+"name": "Interactions"
+}, {
+"colors": {
+"Default": Color(0.8901961, 0.5647059, 0.007843138, 0.41960785)
+},
+"id": "g04yl",
+"name": "Interactors"
+}])
 variants = PackedStringArray("Default")
