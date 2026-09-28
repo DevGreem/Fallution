@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://c1jmh3jdr1f2"]
 
-[ext_resource type="Script" uid="uid://caaqshfbwbxnx" path="res://components/item_system/shop_system/shop_item_node.gd" id="1_tc3di"]
+[ext_resource type="Script" uid="uid://caaqshfbwbxnx" path="res://components/item_system/systems/shop/shop_item_node.gd" id="1_tc3di"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_53wvu"]
 
 [node name="ShopItem" type="HBoxContainer" unique_id=551820757 node_paths=PackedStringArray("texture", "title", "description", "buy_button")]
 custom_minimum_size = Vector2(0, 16)
 custom_maximum_size = Vector2(-1, 16)
-anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 16.0
 grow_horizontal = 2

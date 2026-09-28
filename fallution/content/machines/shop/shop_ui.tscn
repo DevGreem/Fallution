@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clo47v5yf60c6"]
 
-[ext_resource type="Script" uid="uid://bf0d7fptavq4q" path="res://components/item_system/shop_system/shop_ui.gd" id="1_kju2s"]
+[ext_resource type="Script" uid="uid://bf0d7fptavq4q" path="res://components/item_system/systems/shop/shop_ui.gd" id="1_kju2s"]
 [ext_resource type="PackedScene" uid="uid://c1jmh3jdr1f2" path="res://content/machines/shop/shop_item.tscn" id="2_hxnt7"]
 
 [node name="ShopUI" type="Control" unique_id=2058676756 node_paths=PackedStringArray("items_container")]
