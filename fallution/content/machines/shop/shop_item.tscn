@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c1jmh3jdr1f2"]
 
-[ext_resource type="Script" uid="uid://caaqshfbwbxnx" path="res://components/shop_system/shop_item_node.gd" id="1_tc3di"]
+[ext_resource type="Script" uid="uid://caaqshfbwbxnx" path="res://components/item_system/shop_system/shop_item_node.gd" id="1_tc3di"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_53wvu"]
 
-[node name="ShopItem" type="HBoxContainer" unique_id=551820757 node_paths=PackedStringArray("texture", "title", "description")]
+[node name="ShopItem" type="HBoxContainer" unique_id=551820757 node_paths=PackedStringArray("texture", "title", "description", "buy_button")]
 custom_minimum_size = Vector2(0, 16)
 custom_maximum_size = Vector2(-1, 16)
 anchors_preset = 10
@@ -16,6 +16,7 @@ script = ExtResource("1_tc3di")
 texture = NodePath("TextureRect")
 title = NodePath("VBoxContainer/Title")
 description = NodePath("VBoxContainer/Description")
+buy_button = NodePath("Button")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1161005985]
 custom_minimum_size = Vector2(16, 0)
@@ -24,6 +25,7 @@ texture = SubResource("PlaceholderTexture2D_53wvu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1936452627]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="Title" type="Label" parent="VBoxContainer" unique_id=566107121]
@@ -39,6 +41,8 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 3
 text = "Test Description"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=548234059]
 layout_mode = 2

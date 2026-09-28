@@ -20,6 +20,7 @@ func update_shop_ui() -> void:
 	
 	for item: ShopItem in inventory.items:
 		var scene: ShopItemNode = shop_item_ui.instantiate()
+		scene.item = item
 		scene.ui_invoker = self
 		items_container.add_child(scene)
 

@@ -1,12 +1,10 @@
-extends Resource
+extends ItemResource
 
 class_name ShopItem
 
 signal buyed
 
-@export var id: String
-@export var name: String
-@export var description: String
+@export var icon: Texture2D
 @export var value: int
 
 func buy(buyer: Node) -> Variant:
@@ -21,7 +19,7 @@ func _on_buy(buyer: Node) -> Variant:
 
 func can_buy(buyer: Node) -> bool:
 	
-	var money_bag: MoneyBagComponent = ComponentManager.get_component(buyer, MoneyBagComponent)
+	var money_bag: MoneyBagComponent = ComponentManager.recursive_get_component(buyer, buyer, MoneyBagComponent)
 	
 	if not money_bag:
 		return false
@@ -33,7 +31,7 @@ func can_buy(buyer: Node) -> bool:
 
 func _on_before_buy(buyer: Node) -> void:
 	
-	var money_bag: MoneyBagComponent = ComponentManager.get_component(buyer, MoneyBagComponent)
+	var money_bag: MoneyBagComponent = ComponentManager.recursive_get_component(buyer, buyer, MoneyBagComponent)
 	
 	if not money_bag:
 		return
