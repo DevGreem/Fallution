@@ -13,19 +13,24 @@ class Context:
 		actor = _actor
 		target = _target
 
+@export var show_in_gui: bool = true
+
 @abstract
 func get_id() -> StringName
+
+@abstract
+func get_action_title() -> String
 
 @warning_ignore("unused_parameter")
 func can_execute(context: Context) -> bool:
 	return true
 
-func execute(context: Context) -> void:
+func execute(context: Context) -> Variant:
 	
 	if not can_execute(context):
 		return
 	
-	_execute(context)
+	return _execute(context)
 
 @abstract
-func _execute(context: Context) -> void
+func _execute(context: Context) -> Variant
