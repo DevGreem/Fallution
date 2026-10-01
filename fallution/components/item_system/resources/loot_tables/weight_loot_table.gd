@@ -51,9 +51,24 @@ func add_item(item: ItemResource, weight: float) -> void:
 	_items[item] = weight
 	_reset_weight_cache()
 
-func remove_item(item: ItemResource) -> void:
-	_items.erase(item)
-	_reset_weight_cache()
+func remove_item_by_id(item_id: StringName) -> bool:
+	
+	for item: ItemResource in _items:
+		
+		if item.id == item_id:
+			_items.erase(item)
+			return true
+	
+	return false
+
+func remove_item(item: ItemResource) -> bool:
+	
+	var result := _items.erase(item)
+	
+	if result:
+		_reset_weight_cache()
+		
+	return result
 
 func _reset_weight_cache() -> void:
 	_weight_cache = -1.0

@@ -14,6 +14,7 @@ func buy(buyer: Node) -> Variant:
 	buyed.emit()
 	return _on_buy(buyer)
 
+@warning_ignore("unused_parameter")
 func _on_buy(buyer: Node) -> Variant:
 	return
 

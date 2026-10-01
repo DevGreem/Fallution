@@ -10,7 +10,7 @@ func get_id() -> StringName:
 func get_action_title() -> String:
 	return "Drop"
 
-func _execute(context: Context) -> Node2D:
+func _execute(_context: Context) -> Node2D:
 	
 	var item: Node2D = world_item.scene.instantiate()
 	

@@ -3,6 +3,7 @@ extends Node
 class_name BuffManager
 
 @export var _buffs: Dictionary[String, BuffStack] = {}
+@export var _modifiers: Dictionary[StringName, BuffEffect] = {}
 
 func get_buffs() -> Dictionary[String, BuffStack]:
 	return _buffs
