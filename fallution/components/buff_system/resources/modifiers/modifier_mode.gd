@@ -1,8 +1,9 @@
 @abstract
 extends Resource
 
-class_name BuffMode
+class_name ModifierMode
 
+## Inputs: [raw_value: float, buff_value: float]
 func _setup_expression(expression: String) -> Expression:
 	
 	var expr := Expression.new()

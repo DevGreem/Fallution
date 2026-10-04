@@ -14,6 +14,6 @@ func _get_speed() -> float:
 	if not buff_manager:
 		return _speed
 	
-	var result: float = buff_manager.get_final_value(SpeedBuff.new(), _speed)
+	var result: float = buff_manager.get_modified_value(SpeedBuff.new().get_id(), _speed)
 	
 	return result

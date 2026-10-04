@@ -2,39 +2,51 @@ extends Node
 
 class_name BuffManager
 
-@export var _buffs: Dictionary[String, BuffStack] = {}
-@export var _modifiers: Dictionary[StringName, BuffEffect] = {}
+@export var _buffs: Dictionary[StringName, Buff] = {}
+@export var _modifiers: Dictionary[StringName, StatModifier] = {}
 
-func get_buffs() -> Dictionary[String, BuffStack]:
+func get_buffs() -> Dictionary[StringName, Buff]:
 	return _buffs
 
-func get_buff_by_id(id: String) -> BuffStack:
+func get_buff_by_id(id: StringName) -> Buff:
 	return _buffs[id]
-
-func get_buff_by_type(type: BuffType) -> BuffStack:
-	return get_buff_by_id(type.get_id())
 
 func add_buff(buff: Buff) -> void:
 	
-	_add_key_if_not_exists(buff)
+	var buff_id: StringName = buff.ID
 	
-	_buffs[buff.type.get_id()].append_buff(buff)
+	if _buffs.has(buff_id):
+		pass
+	
+	_buffs[buff_id] = buff
+
+## For future
+func add_active_buff(buff: Buff) -> void:
+	pass
 
 func add_buffs(buffs: Array[Buff]) -> void:
 	
 	for buff: Buff in buffs:
 		add_buff(buff)
 
-func get_final_value(type: BuffType, value: float) -> float:
+func get_modified_value(type: StringName, raw_value: float) -> float:
 	
-	if not _buffs.has(type.get_id()):
-		return value
+	var modifiers := _modifiers[type]
 	
-	var stack: BuffStack = _buffs[type.get_id()]
+	var result := raw_value
 	
-	var result: float = stack.get_final_value(value)
+	for modifier: StatModifier in modifiers:
+		
+		result = modifier.get_value_modified(raw_value)
 	
 	return result
+
+func add_modifier(modifier: StatModifier) -> void:
+	
+	_modifiers[modifier.type.get_id()] = modifier
+
+func clear_modifier(id: StringName) -> void:
+	_modifiers[id]
 
 func clear_buff_id(id: String) -> bool:
 	
@@ -44,18 +56,15 @@ func clear_buff_id(id: String) -> bool:
 	_buffs[id].clear()
 	return true
 
-func clear_buff_type(type: BuffType) -> bool:
-	return clear_buff_id(type.get_id())
-
 func clear() -> void:
 	_buffs.clear()
 
 func _add_key_if_not_exists(buff: Buff) -> bool:
 	
-	var buff_id: String = buff.type.get_id()
+	var buff_id: String = buff.ID
 	
 	if _buffs.has(buff_id):
 		return false
 	
-	_buffs[buff_id] = BuffStack.new()
+	_buffs[buff_id] = buff
 	return true
