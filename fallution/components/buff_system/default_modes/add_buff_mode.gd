@@ -1,4 +1,4 @@
-extends BuffMode
+extends ModifierMode
 
 class_name AddBuffMode
 

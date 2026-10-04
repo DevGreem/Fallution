@@ -1,0 +1,4 @@
+# Dependencies for player_system
+# One entry per line:
+#   - another_library_name
+#   - https://github.com/user/repo

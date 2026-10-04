@@ -202,7 +202,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1)
 theme_override_font_sizes/font_size = 12
-text = "Select a stack to check its libraries in the Libraries tab."
+text = "Check a stack to select its libraries in the Libraries tab."
 text_overrun_behavior = 3
 
 [node name="NewStackButton" type="Button" parent="Margin/VBox/Tabs/LibraryStacks/StackToolbar" unique_id=1122490634]
@@ -311,6 +311,7 @@ icon = SubResource("DPITexture_lpl5q")
 [connection signal="pressed" from="Margin/VBox/Tabs/LibraryStacks/StackToolbar/NewStackButton" to="." method="_on_new_stack_pressed"]
 [connection signal="pressed" from="Margin/VBox/Tabs/LibraryStacks/StackToolbar/EditStackButton" to="." method="_on_edit_stack_pressed"]
 [connection signal="pressed" from="Margin/VBox/Tabs/LibraryStacks/StackToolbar/DeleteStackButton" to="." method="_on_delete_stack_pressed"]
+[connection signal="item_edited" from="Margin/VBox/Tabs/LibraryStacks/StackContent/StackTree" to="." method="_on_stack_item_edited"]
 [connection signal="item_selected" from="Margin/VBox/Tabs/LibraryStacks/StackContent/StackTree" to="." method="_on_stack_selected"]
 [connection signal="pressed" from="Margin/VBox/SyncBar/UpdateFromStorageButton" to="." method="_on_update_from_storage_pressed"]
 [connection signal="pressed" from="Margin/VBox/SyncBar/PushToStorageButton" to="." method="_on_push_to_storage_pressed"]

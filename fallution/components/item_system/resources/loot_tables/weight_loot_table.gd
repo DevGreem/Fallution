@@ -12,7 +12,7 @@ func get_random_item(..._params: Array) -> ItemResource:
 	
 	var total_weight := get_total_weight()
 	
-	var to_search := randi_range(1, total_weight)
+	var to_search := randf_range(1, total_weight)
 	
 	var total_sum: float = 0.0
 	for item: ItemResource in _items:

@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://calhuacxksl7b" path="res://components/buff_system/components/buffable_move_component_2d.gd" id="3_5bf07"]
 [ext_resource type="Script" uid="uid://cshnmf0olen85" path="res://components/move_system/gravity_component_2d.gd" id="4_0a6sp"]
 [ext_resource type="Script" uid="uid://bijinphfvi0l6" path="res://components/input_system/input_manager_component.gd" id="4_5bf07"]
-[ext_resource type="Script" uid="uid://bp5b37xnifyye" path="res://components/move_system/inputs/move_input_component_1d.gd" id="5_w342o"]
+[ext_resource type="Script" uid="uid://bp5b37xnifyye" path="res://components/move_system_inputs/move_input_component_1d.gd" id="5_w342o"]
 [ext_resource type="Script" uid="uid://6sdqjg3mljwl" path="res://components/buff_system/buff_manager.gd" id="8_5bf07"]
 [ext_resource type="Script" uid="uid://cquksumofu51y" path="res://scripts/inputs/interact_input_component_2d.gd" id="8_m71c2"]
-[ext_resource type="Script" uid="uid://b4434pm5gmtrr" path="res://components/item_system/systems/shop/money_bag_component.gd" id="9_w342o"]
+[ext_resource type="Script" uid="uid://b4434pm5gmtrr" path="res://components/shop_system/money_bag_component.gd" id="9_w342o"]
 [ext_resource type="Script" uid="uid://c3dkm3li8244q" path="res://components/interaction_system/interact_component_2d.gd" id="10_pk271"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_obaep"]

@@ -4,7 +4,7 @@ signal player_spawned()
 signal player_died()
 signal player_changed()
 
-var current_player: Node2D = null:
+var current_player: Node = null:
 	set(value):
 		
 		if current_player == value:

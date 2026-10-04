@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1jmh3jdr1f2"]
 
-[ext_resource type="Script" uid="uid://caaqshfbwbxnx" path="res://components/item_system/systems/shop/shop_item_node.gd" id="1_tc3di"]
+[ext_resource type="Script" uid="uid://caaqshfbwbxnx" path="res://components/shop_system/shop_item_node.gd" id="1_tc3di"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_53wvu"]
 

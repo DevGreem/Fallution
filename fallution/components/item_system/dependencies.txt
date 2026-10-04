@@ -1,0 +1,4 @@
+# Dependencies for item_system
+# One entry per line:
+#   - another_library_name
+#   - https://github.com/user/repo

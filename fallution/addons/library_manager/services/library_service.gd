@@ -83,6 +83,43 @@ func remove_libraries(lib_names: Array) -> void:
 	remove_finished.emit()
 
 
+## Returns every library installed in the project that directly or indirectly
+## depends on `lib_name` (transitive closure), excluding `lib_name` itself.
+func find_project_dependents(lib_name: String) -> Array[String]:
+	var result: Array[String] = []
+	var components := LibraryManagerSettings.get_absolute_components_path()
+	if components == "" or not DirAccess.dir_exists_absolute(components):
+		return result
+
+	var libs := LibraryScanner.scan(components)
+	var visited: Dictionary = {lib_name: true}
+	var queue: Array[String] = [lib_name]
+	while not queue.is_empty():
+		var current: String = queue.pop_front()
+		for lib: LibraryData in libs:
+			if visited.has(lib.name):
+				continue
+			if lib.dependencies.has(current):
+				visited[lib.name] = true
+				result.append(lib.name)
+				queue.append(lib.name)
+	return result
+
+
+## Deletes the given absolute folders (recursively) from the project and
+## notifies the editor. Used by the FileSystem dock context menu.
+func remove_project_folders(folders: Array) -> void:
+	var deleted: Array[String] = []
+	for folder: String in folders:
+		if LMFileUtils.delete_directory_recursive(folder):
+			deleted.append(folder.get_file())
+	if deleted.size() > 0:
+		print("Library Manager: removed from project: ", ", ".join(deleted))
+	else:
+		push_warning("Library Manager: no folders were removed from the project.")
+	changed.emit()
+
+
 func save_library(source_path: String, lib_name: String) -> void:
 	var abs_source := LibraryManagerSettings.globalize(source_path)
 	var abs_dst := LibraryManagerSettings.get_storage_path().path_join(lib_name)

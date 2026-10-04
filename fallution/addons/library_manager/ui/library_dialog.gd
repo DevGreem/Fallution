@@ -227,12 +227,16 @@ func _refresh_stack_tree() -> void:
 	var root: TreeItem = _stack_tree.create_item()
 	for stack: LibraryStack in _stacks:
 		var stack_item: TreeItem = _stack_tree.create_item(root)
+		stack_item.set_cell_mode(0, TreeItem.CELL_MODE_CHECK)
+		stack_item.set_editable(0, true)
 		stack_item.set_text(0, stack.name)
 		stack_item.set_metadata(0, stack.name)
 		stack_item.set_text(1, "%d" % stack.libraries.size())
 		stack_item.set_tooltip_text(0, stack.name)
 		for lib_name: String in stack.libraries:
 			var lib_item: TreeItem = _stack_tree.create_item(stack_item)
+			lib_item.set_cell_mode(0, TreeItem.CELL_MODE_CHECK)
+			lib_item.set_editable(0, true)
 			lib_item.set_text(0, lib_name)
 			lib_item.set_metadata(0, stack.name)
 			lib_item.set_metadata(1, lib_name)
@@ -241,8 +245,53 @@ func _refresh_stack_tree() -> void:
 			else:
 				lib_item.set_custom_color(0, Color(0.85, 0.65, 0.35))
 				lib_item.set_tooltip_text(0, lib_name + " (not found in storage)")
+	_update_stack_check_states()
 	_update_stack_empty_state()
 	_update_stack_buttons()
+
+
+## Syncs every LibraryStack checkbox with the current Libraries tab selection:
+## checked when all its libraries are selected, indeterminate when only some
+## are, unchecked when none are.
+func _update_stack_check_states() -> void:
+	if not _stack_tree or not is_instance_valid(_stack_tree):
+		return
+	var root: TreeItem = _stack_tree.get_root()
+	if not root:
+		return
+	var stack_item: TreeItem = root.get_first_child()
+	while stack_item:
+		var stack := _stack_by_name(String(stack_item.get_metadata(0)))
+		if stack:
+			_update_stack_item_state(stack_item, stack)
+		stack_item = stack_item.get_next()
+
+
+func _update_stack_item_state(stack_item: TreeItem, stack: LibraryStack) -> void:
+	var total: int = stack.libraries.size()
+	var checked: int = 0
+	for lib_name: String in stack.libraries:
+		var lib_item: TreeItem = _find_item_by_name(lib_name)
+		if lib_item and lib_item.is_checked(0):
+			checked += 1
+
+	if total == 0 or checked == 0:
+		stack_item.set_checked(0, false)
+		stack_item.set_indeterminate(0, false)
+	elif checked == total:
+		stack_item.set_checked(0, true)
+		stack_item.set_indeterminate(0, false)
+	else:
+		stack_item.set_checked(0, false)
+		stack_item.set_indeterminate(0, true)
+
+	var child: TreeItem = stack_item.get_first_child()
+	while child:
+		var lib_name := String(child.get_metadata(1))
+		var lib_item: TreeItem = _find_item_by_name(lib_name)
+		child.set_checked(0, lib_item != null and lib_item.is_checked(0))
+		child.set_indeterminate(0, false)
+		child = child.get_next()
 
 
 func _update_stack_empty_state() -> void:
@@ -274,17 +323,37 @@ func _get_selected_stack() -> LibraryStack:
 
 
 func _on_stack_selected() -> void:
-	var stack := _get_selected_stack()
-	if not stack:
-		_update_stack_buttons()
-		return
-	_apply_stack_to_selection(stack)
 	_update_stack_buttons()
+
+
+## Checks or unchecks a Stack (and its child library rows) so the Libraries tab
+## selection stays in sync with the LibraryStacks tab.
+func _on_stack_item_edited() -> void:
+	var item: TreeItem = _stack_tree.get_edited()
+	if not item:
+		return
+	var stack := _stack_by_name(String(item.get_metadata(0)))
+	if not stack:
+		return
+
+	var lib_name: Variant = item.get_metadata(1)
+	if lib_name != null:
+		if item.is_checked(0):
+			_check_dependencies_recursive(String(lib_name))
+		else:
+			_uncheck_dependents_recursive(String(lib_name))
+	elif item.is_checked(0):
+		_check_stack(stack)
+	else:
+		_uncheck_stack(stack)
+
+	_update_status()
+	_update_stack_check_states()
 
 
 ## Checks every library contained in `stack` (and its dependencies) so that
 ## switching to the Libraries tab shows them already selected.
-func _apply_stack_to_selection(stack: LibraryStack) -> void:
+func _check_stack(stack: LibraryStack) -> void:
 	var applied: int = 0
 	var missing: Array[String] = []
 	for lib_name: String in stack.libraries:
@@ -293,13 +362,19 @@ func _apply_stack_to_selection(stack: LibraryStack) -> void:
 			applied += 1
 		else:
 			missing.append(lib_name)
-	_update_status()
 	if applied == 0 and not stack.libraries.is_empty():
 		push_warning("Library Manager: none of the libraries in stack '%s' exist in storage." % stack.name)
 	elif missing.size() > 0:
 		push_warning(
 			"Library Manager: stack '%s' references missing libraries: %s" % [stack.name, ", ".join(missing)]
 		)
+
+
+## Unchecks every library contained in `stack`, cascading to any dependents.
+func _uncheck_stack(stack: LibraryStack) -> void:
+	for lib_name: String in stack.libraries:
+		if _find_item_by_name(lib_name):
+			_uncheck_dependents_recursive(lib_name)
 
 
 func _on_new_stack_pressed() -> void:
@@ -370,6 +445,7 @@ func _on_tree_item_edited() -> void:
 	else:
 		_uncheck_dependents_recursive(lib_name)
 	_update_status()
+	_update_stack_check_states()
 
 
 func _check_dependencies_recursive(lib_name: String) -> void:
@@ -439,6 +515,7 @@ func _on_select_all_pressed() -> void:
 			child.set_checked(0, true)
 		child = child.get_next()
 	_update_status()
+	_update_stack_check_states()
 
 
 func _on_deselect_all_pressed() -> void:
@@ -450,6 +527,7 @@ func _on_deselect_all_pressed() -> void:
 		child.set_checked(0, false)
 		child = child.get_next()
 	_update_status()
+	_update_stack_check_states()
 
 
 func _on_open_storage_pressed() -> void:
