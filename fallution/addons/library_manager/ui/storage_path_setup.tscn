@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dw17pjr8c27w6"]
+
+[ext_resource type="Script" uid="uid://cmqe2hstpceht" path="res://addons/library_manager/ui/storage_path_setup.gd" id="1"]
+
+[node name="StoragePathSetup" type="FileDialog" unique_id=1229087594]
+oversampling_override = 1.0
+title = "Open a Directory"
+size = Vector2i(820, 620)
+min_size = Vector2i(560, 420)
+ok_button_text = "Use This Folder"
+file_mode = 2
+access = 2
+use_native_dialog = true
+script = ExtResource("1")

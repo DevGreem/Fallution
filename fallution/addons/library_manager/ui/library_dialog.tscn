@@ -1,0 +1,320 @@
+[gd_scene format=3 uid="uid://cbr444nub01f5"]
+
+[ext_resource type="Script" uid="uid://ddylux3i3q5vm" path="res://addons/library_manager/ui/library_dialog.gd" id="1"]
+
+[sub_resource type="DPITexture" id="DPITexture_88adq"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M2 2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-4a1 1 0 0 1-1-1V3a1 1 0 0 0-1-1z\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_cfnra"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M5 8a4 4 0 1 1 4 4v2a6 6 0 1 0-6-6H1l3 4 3-4z\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_cou04"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m7 1v6h-6v2h6v6h2v-6h6v-2h-6v-6z\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_w8jdb"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m7 1c-.554 0-1 .446-1 1v2h4v-2c0-.554-.446-1-1-1zm-1 4v7l2 3 2-3v-7zm1 1h1v5h-1z\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_3kyvp"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m5 1v1h-4v2h14v-2h-4v-1zm-3 4v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8zm1 2h2v6h-2zm4 0h2v6h-2zm4 0h2v6h-2z\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_en4ry"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#e0e0e0\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M8 5v7l4-4m-4 4L4 8\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_ohg1m"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#e0e0e0\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M8 11V4L4 8m4-4 4 4\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_lpl5q"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"none\" stroke=\"#e0e0e0\" stroke-width=\"2\" d=\"m3 3 10 10M3 13 13 3\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[node name="LibraryDialog" type="Window" unique_id=1137987239]
+oversampling_override = 1.0
+title = "Manage Libraries"
+size = Vector2i(800, 660)
+visible = false
+exclusive = true
+min_size = Vector2i(640, 480)
+script = ExtResource("1")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=699937439]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="Margin" unique_id=1473028050]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="VBoxContainer" parent="Margin/VBox" unique_id=1242092886]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="TitleRow" type="HBoxContainer" parent="Margin/VBox/Header" unique_id=636049177]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Margin/VBox/Header/TitleRow" unique_id=1563297230]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "Manage Libraries"
+
+[node name="OpenStorageButton" type="Button" parent="Margin/VBox/Header/TitleRow" unique_id=1376548298]
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Open the storage folder in your file manager"
+text = "Open Storage Folder"
+icon = SubResource("DPITexture_88adq")
+
+[node name="StorageInfo" type="Label" parent="Margin/VBox/Header" unique_id=2021657218]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1)
+theme_override_font_sizes/font_size = 12
+text = "Storage: "
+text_overrun_behavior = 3
+
+[node name="HeaderSep" type="HSeparator" parent="Margin/VBox" unique_id=1932830114]
+layout_mode = 2
+
+[node name="Tabs" type="TabContainer" parent="Margin/VBox" unique_id=555102331]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Libraries" type="VBoxContainer" parent="Margin/VBox/Tabs" unique_id=774512908]
+layout_mode = 2
+theme_override_constants/separation = 8
+metadata/_tab_index = 0
+
+[node name="Toolbar" type="HBoxContainer" parent="Margin/VBox/Tabs/Libraries" unique_id=890798622]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SearchEdit" type="LineEdit" parent="Margin/VBox/Tabs/Libraries/Toolbar" unique_id=761937475]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Filter by name or dependency…"
+clear_button_enabled = true
+
+[node name="RefreshButton" type="Button" parent="Margin/VBox/Tabs/Libraries/Toolbar" unique_id=867182906]
+layout_mode = 2
+tooltip_text = "Rescan the storage folder"
+text = "Refresh"
+icon = SubResource("DPITexture_cfnra")
+
+[node name="Content" type="MarginContainer" parent="Margin/VBox/Tabs/Libraries" unique_id=332371912]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="Margin/VBox/Tabs/Libraries/Content" unique_id=17229721]
+layout_mode = 2
+columns = 2
+column_titles_visible = true
+allow_reselect = true
+hide_root = true
+select_mode = 1
+
+[node name="EmptyState" type="Label" parent="Margin/VBox/Tabs/Libraries/Content" unique_id=524156773]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.63, 0.68, 1)
+theme_override_font_sizes/font_size = 13
+text = "No libraries found."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LibraryStacks" type="VBoxContainer" parent="Margin/VBox/Tabs" unique_id=1805512774]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+metadata/_tab_index = 1
+
+[node name="StackToolbar" type="HBoxContainer" parent="Margin/VBox/Tabs/LibraryStacks" unique_id=1328051640]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StackHint" type="Label" parent="Margin/VBox/Tabs/LibraryStacks/StackToolbar" unique_id=1068539431]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1)
+theme_override_font_sizes/font_size = 12
+text = "Select a stack to check its libraries in the Libraries tab."
+text_overrun_behavior = 3
+
+[node name="NewStackButton" type="Button" parent="Margin/VBox/Tabs/LibraryStacks/StackToolbar" unique_id=1122490634]
+layout_mode = 2
+tooltip_text = "Create a new LibraryStack"
+text = "New Stack"
+icon = SubResource("DPITexture_cou04")
+
+[node name="EditStackButton" type="Button" parent="Margin/VBox/Tabs/LibraryStacks/StackToolbar" unique_id=408764518]
+layout_mode = 2
+tooltip_text = "Edit the selected LibraryStack"
+disabled = true
+text = "Edit"
+icon = SubResource("DPITexture_w8jdb")
+
+[node name="DeleteStackButton" type="Button" parent="Margin/VBox/Tabs/LibraryStacks/StackToolbar" unique_id=1063713819]
+layout_mode = 2
+tooltip_text = "Delete the selected LibraryStack"
+disabled = true
+text = "Delete"
+icon = SubResource("DPITexture_3kyvp")
+
+[node name="StackContent" type="MarginContainer" parent="Margin/VBox/Tabs/LibraryStacks" unique_id=1116690569]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StackTree" type="Tree" parent="Margin/VBox/Tabs/LibraryStacks/StackContent" unique_id=1784484221]
+layout_mode = 2
+columns = 2
+column_titles_visible = true
+hide_root = true
+select_mode = 1
+
+[node name="StackEmptyState" type="Label" parent="Margin/VBox/Tabs/LibraryStacks/StackContent" unique_id=1140058778]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.63, 0.68, 1)
+theme_override_font_sizes/font_size = 13
+text = "No LibraryStacks yet."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SyncBar" type="HBoxContainer" parent="Margin/VBox" unique_id=1645992379]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SyncLabel" type="Label" parent="Margin/VBox/SyncBar" unique_id=514473813]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1)
+theme_override_font_sizes/font_size = 12
+text = "Sync checked libraries:"
+vertical_alignment = 1
+
+[node name="UpdateFromStorageButton" type="Button" parent="Margin/VBox/SyncBar" unique_id=2033412521]
+layout_mode = 2
+tooltip_text = "Replace the checked libraries in this project with the versions from the storage folder."
+disabled = true
+text = "Pull to Project"
+icon = SubResource("DPITexture_en4ry")
+
+[node name="PushToStorageButton" type="Button" parent="Margin/VBox/SyncBar" unique_id=788712283]
+layout_mode = 2
+tooltip_text = "Overwrite the storage versions of the checked libraries with the versions from this project."
+disabled = true
+text = "Push to Storage"
+icon = SubResource("DPITexture_ohg1m")
+
+[node name="ButtonBar" type="HBoxContainer" parent="Margin/VBox" unique_id=473946588]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatusLabel" type="Label" parent="Margin/VBox/ButtonBar" unique_id=328756676]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.62, 0.66, 0.72, 1)
+theme_override_font_sizes/font_size = 12
+text = "0 of 0 selected"
+
+[node name="SelectAllButton" type="Button" parent="Margin/VBox/ButtonBar" unique_id=706212816]
+layout_mode = 2
+text = "Select All"
+
+[node name="DeselectAllButton" type="Button" parent="Margin/VBox/ButtonBar" unique_id=656792474]
+layout_mode = 2
+text = "Deselect All"
+icon = SubResource("DPITexture_lpl5q")
+
+[node name="ApplyButton" type="Button" parent="Margin/VBox/ButtonBar" unique_id=1706573982]
+layout_mode = 2
+tooltip_text = "Apply the checked libraries to this project"
+disabled = true
+text = "Apply"
+
+[node name="CancelButton" type="Button" parent="Margin/VBox/ButtonBar" unique_id=942337755]
+layout_mode = 2
+text = "Cancel"
+icon = SubResource("DPITexture_lpl5q")
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="Margin/VBox/Header/TitleRow/OpenStorageButton" to="." method="_on_open_storage_pressed"]
+[connection signal="text_changed" from="Margin/VBox/Tabs/Libraries/Toolbar/SearchEdit" to="." method="_on_search_text_changed"]
+[connection signal="pressed" from="Margin/VBox/Tabs/Libraries/Toolbar/RefreshButton" to="." method="_on_refresh_pressed"]
+[connection signal="item_edited" from="Margin/VBox/Tabs/Libraries/Content/Tree" to="." method="_on_tree_item_edited"]
+[connection signal="pressed" from="Margin/VBox/Tabs/LibraryStacks/StackToolbar/NewStackButton" to="." method="_on_new_stack_pressed"]
+[connection signal="pressed" from="Margin/VBox/Tabs/LibraryStacks/StackToolbar/EditStackButton" to="." method="_on_edit_stack_pressed"]
+[connection signal="pressed" from="Margin/VBox/Tabs/LibraryStacks/StackToolbar/DeleteStackButton" to="." method="_on_delete_stack_pressed"]
+[connection signal="item_selected" from="Margin/VBox/Tabs/LibraryStacks/StackContent/StackTree" to="." method="_on_stack_selected"]
+[connection signal="pressed" from="Margin/VBox/SyncBar/UpdateFromStorageButton" to="." method="_on_update_from_storage_pressed"]
+[connection signal="pressed" from="Margin/VBox/SyncBar/PushToStorageButton" to="." method="_on_push_to_storage_pressed"]
+[connection signal="pressed" from="Margin/VBox/ButtonBar/SelectAllButton" to="." method="_on_select_all_pressed"]
+[connection signal="pressed" from="Margin/VBox/ButtonBar/DeselectAllButton" to="." method="_on_deselect_all_pressed"]
+[connection signal="pressed" from="Margin/VBox/ButtonBar/ApplyButton" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="Margin/VBox/ButtonBar/CancelButton" to="." method="_on_cancel_pressed"]

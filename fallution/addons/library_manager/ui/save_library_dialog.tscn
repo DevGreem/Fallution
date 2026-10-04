@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://byjdole5a4je3"]
+
+[ext_resource type="Script" uid="uid://dcmuw8orlfgo3" path="res://addons/library_manager/ui/save_library_dialog.gd" id="1_3ind2"]
+
+[node name="SaveLibraryDialog" type="FileDialog" unique_id=1418132748]
+oversampling_override = 1.0
+title = "Open a Directory"
+size = Vector2i(820, 620)
+visible = true
+min_size = Vector2i(560, 420)
+ok_button_text = "Save as Library"
+file_mode = 2
+script = ExtResource("1_3ind2")
