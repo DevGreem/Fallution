@@ -15,9 +15,6 @@ signal consumed_uses()
 
 @export var effects: Array[BuffEffect] = []
 
-## Temporal type
-@export var stack_method: BuffStackMethod
-
 ## -1.0 = Infinity
 @export var default_time: float = -1.0
 var current_time: float:

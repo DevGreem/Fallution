@@ -1,8 +1,8 @@
-extends Resource
+extends RefCounted
 
 class_name ActiveBuff
 
-@export var instances: Array[Buff] = []
+var instances: Array[Buff] = []
 
 func add_instance(buff: Buff) -> bool:
 	

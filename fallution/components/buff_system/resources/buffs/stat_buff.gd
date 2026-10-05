@@ -7,7 +7,9 @@ class_name StatBuff
 func _on_apply(context: BuffContext) -> void:
 	
 	if context.target is BuffManager:
-		pass
+		_apply_to_buff_manager(context.target as BuffManager)
+		return
+	
 	print("Applied stat buff to ", context.target, ": ", self)
 
 func _on_remove(context: BuffContext) -> void:
@@ -15,3 +17,7 @@ func _on_remove(context: BuffContext) -> void:
 
 func _to_string() -> String:
 	return "StatBuffEffect[{0}]" % [stat_modifier]
+
+func _apply_to_buff_manager(buff_manager: BuffManager) -> void:
+	
+	pass
