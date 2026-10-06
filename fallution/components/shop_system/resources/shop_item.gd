@@ -1,26 +1,43 @@
-extends ItemResource
+@abstract
+extends Resource
 
 class_name ShopItem
 
 signal buyed
 
-@export var icon: Texture2D
 @export var value: int
 
-func buy(buyer: Node) -> Variant:
+var title: String:
+	get = get_title
+
+var description: String:
+	get = get_description
+
+var icon: Texture2D:
+	get = get_icon
+
+@abstract
+func get_title() -> String
+
+@abstract
+func get_description() -> String
+
+@abstract
+func get_icon() -> Texture2D
+
+func buy(shop: ShopUI) -> Variant:
 	
-	_on_before_buy(buyer)
+	_on_before_buy(shop)
 	
 	buyed.emit()
-	return _on_buy(buyer)
+	return _on_buy(shop)
 
-@warning_ignore("unused_parameter")
-func _on_buy(buyer: Node) -> Variant:
-	return
+@abstract
+func _on_buy(shop: ShopUI) -> Variant
 
-func can_buy(buyer: Node) -> bool:
+func can_buy(shop: ShopUI) -> bool:
 	
-	var money_bag: MoneyBagComponent = ComponentManager.recursive_get_component(buyer, buyer, MoneyBagComponent)
+	var money_bag: MoneyBagComponent = ComponentManager.recursive_get_component(shop.interactor, shop.interactor, MoneyBagComponent)
 	
 	if not money_bag:
 		return false
@@ -30,9 +47,9 @@ func can_buy(buyer: Node) -> bool:
 	
 	return true
 
-func _on_before_buy(buyer: Node) -> void:
+func _on_before_buy(shop: ShopUI) -> void:
 	
-	var money_bag: MoneyBagComponent = ComponentManager.recursive_get_component(buyer, buyer, MoneyBagComponent)
+	var money_bag: MoneyBagComponent = ComponentManager.recursive_get_component(shop.interactor, shop.interactor, MoneyBagComponent)
 	
 	if not money_bag:
 		return

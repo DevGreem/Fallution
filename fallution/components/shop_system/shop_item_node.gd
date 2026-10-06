@@ -24,7 +24,7 @@ func _update_data() -> void:
 
 func _on_button_pressed() -> void:
 	
-	if not item.can_buy(ui_invoker.interactor):
+	if not item.can_buy(ui_invoker):
 		return
 	
-	item.buy(ui_invoker.interactor)
+	item.buy(ui_invoker)

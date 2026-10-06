@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="InteractorBuffShopItem" format=3 uid="uid://081tjiu3j3lt"]
 
-[ext_resource type="Script" uid="uid://b1xfsscktlsnn" path="res://components/item_system/resources/item_action.gd" id="1_2dtp3"]
 [ext_resource type="Script" uid="uid://ds0efnvh67pri" path="res://resources/shop_items/interactor_buff_shop_item.gd" id="2_25r8n"]
 [ext_resource type="Script" uid="uid://bnptbacnxmaw6" path="res://components/buff_system/resources/buffs/buff_effect.gd" id="2_sj522"]
 [ext_resource type="Script" uid="uid://ea0y7dnjdyql" path="res://components/buff_system/resources/buffs/stat_buff.gd" id="3_e6vrm"]
@@ -39,6 +38,4 @@ metadata/_custom_type_script = "uid://j8qyc1jkx4u6"
 [resource]
 script = ExtResource("2_25r8n")
 buff = SubResource("Resource_r12ue")
-_ID = &"speed_buff_upgrade"
-name = "Speed Buff Upgrade"
 metadata/_custom_type_script = "uid://ds0efnvh67pri"

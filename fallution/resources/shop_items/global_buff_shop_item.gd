@@ -1,10 +1,8 @@
-extends ShopItem
+extends BuffShopItem
 
 class_name GlobalBuffShopItem
 
-@export var buff: Buff
-
-func _on_buy(_buyer: Node) -> Variant:
+func _on_buy(_buyer: ShopUI) -> Variant:
 	GlobalBuffManager.add_buff(buff)
 	print("Upgraded ", buff.type.get_id(), "!")
 	
