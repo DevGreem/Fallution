@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ShopInventory" format=3 uid="uid://bwfusk3p64fnl"]
 
 [ext_resource type="Script" uid="uid://3jxohc0ye1cq" path="res://components/shop_system/resources/shop_item.gd" id="1_li77f"]
-[ext_resource type="Resource" uid="uid://081tjiu3j3lt" path="res://content/shops_inventory/base_shop/interactor_speed_buff.tres" id="2_3qrmo"]
+[ext_resource type="Resource" uid="uid://cgpbbnwpepmio" path="res://content/buffs/shop_speed_upgrade_buff.tres" id="2_3qrmo"]
 [ext_resource type="Script" uid="uid://irjvxq7y563y" path="res://components/shop_system/resources/shop_inventory.gd" id="2_ig8r6"]
 
 [resource]

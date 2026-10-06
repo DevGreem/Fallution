@@ -35,6 +35,8 @@ func get_buff_by_id(id: StringName) -> ActiveBuff:
 
 func _on_consumed_buff(buff: Buff) -> void:
 	
+	print("Removing buff ", buff, " (", buff.ID, ") from the buff manager ", self)
+	
 	var context := BuffContext.new(
 		self,
 		self,
@@ -43,16 +45,25 @@ func _on_consumed_buff(buff: Buff) -> void:
 	context.is_consumed = true
 	
 	_buffs[buff.ID].remove_instance(buff, context)
+	
+	print("Buff removed.")
 
 func add_buff(buff: Buff, context: BuffContext = null) -> void:
 	
 	if not buff:
 		return
 	
+	print("Adding the buff ", buff, " to buff manager ", self)
+	
+	buff = buff.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	
 	if not buff.has_started:
 		buff.reset_counters()
 	
-	buff.consumed.connect(_on_consumed_buff.bind(buff), ConnectFlags.CONNECT_ONE_SHOT)
+	var callable := _on_consumed_buff.bind(buff)
+	
+	if not buff.consumed.is_connected(callable):
+		buff.consumed.connect(callable, ConnectFlags.CONNECT_ONE_SHOT)
 	
 	var buff_id: StringName = buff.ID
 	
@@ -124,12 +135,20 @@ func clear_buff_id(id: String, context: BuffContext = null) -> bool:
 
 func get_modified_value(type: StringName, raw_value: float) -> float:
 	
+	print("Getting a new modified value of type ", type, " and value = ", raw_value)
+	
 	var stack: ModifiersStack = _modifiers.get(type, null)
 	
 	if not stack:
+		print("This type don't have a stack assigned")
 		return raw_value
 	
-	return stack.get_modified_value(raw_value)
+	print("Getted stack: ", stack)
+	
+	var new_value := stack.get_modified_value(raw_value)
+	print("New value with modifiers: ", new_value)
+	
+	return new_value
 
 func add_modifier(modifier: StatModifier) -> void:
 	var modifier_id := modifier.type.get_id()

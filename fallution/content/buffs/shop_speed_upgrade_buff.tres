@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="InteractorBuffShopItem" format=3 uid="uid://cgpbbnwpepmio"]
+
+[ext_resource type="Script" uid="uid://bnptbacnxmaw6" path="res://components/buff_system/resources/buffs/buff_effect.gd" id="1_38an8"]
+[ext_resource type="Script" uid="uid://ds0efnvh67pri" path="res://resources/shop_items/interactor_buff_shop_item.gd" id="1_iyxc6"]
+[ext_resource type="Script" uid="uid://ea0y7dnjdyql" path="res://components/buff_system/resources/buffs/stat_buff.gd" id="2_ngymr"]
+[ext_resource type="Script" uid="uid://gs5h03klqpnu" path="res://components/buff_system/default_modes/multiply_buff_mode.gd" id="3_k155v"]
+[ext_resource type="Script" uid="uid://bxks1ugpasenc" path="res://components/buff_system/resources/modifiers/stat_modifier.gd" id="4_bd03r"]
+[ext_resource type="Script" uid="uid://c2tx0v6ha0j36" path="res://resources/buff_types/speed_buff.gd" id="5_ggppg"]
+[ext_resource type="Script" uid="uid://j8qyc1jkx4u6" path="res://components/buff_system/resources/buffs/buff.gd" id="6_5phiy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b0psh"]
+size = Vector2(16, 16)
+
+[sub_resource type="Resource" id="Resource_38an8"]
+script = ExtResource("3_k155v")
+metadata/_custom_type_script = "uid://gs5h03klqpnu"
+
+[sub_resource type="Resource" id="Resource_2dt17"]
+script = ExtResource("5_ggppg")
+metadata/_custom_type_script = "uid://c2tx0v6ha0j36"
+
+[sub_resource type="Resource" id="Resource_g1gtg"]
+script = ExtResource("4_bd03r")
+type = SubResource("Resource_2dt17")
+mode = SubResource("Resource_38an8")
+value = 1.1
+metadata/_custom_type_script = "uid://bxks1ugpasenc"
+
+[sub_resource type="Resource" id="Resource_mxis2"]
+script = ExtResource("2_ngymr")
+stat_modifier = SubResource("Resource_g1gtg")
+metadata/_custom_type_script = "uid://ea0y7dnjdyql"
+
+[sub_resource type="Resource" id="Resource_t4n7x"]
+script = ExtResource("6_5phiy")
+ID = &"shop_speed_upgrade"
+effects = Array[ExtResource("1_38an8")]([SubResource("Resource_mxis2")])
+metadata/_custom_type_script = "uid://j8qyc1jkx4u6"
+
+[resource]
+script = ExtResource("1_iyxc6")
+buff = SubResource("Resource_t4n7x")
+_custom_buff_title = "Speed Upgrade"
+_buff_description = "Upgrade your speed (+10%)"
+_buff_icon = SubResource("PlaceholderTexture2D_b0psh")
+metadata/_custom_type_script = "uid://ds0efnvh67pri"

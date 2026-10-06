@@ -19,7 +19,7 @@ var ui_invoker: ShopUI
 
 func _update_data() -> void:
 	texture.texture = item.icon
-	title.text = item.name
+	title.text = item.title
 	description.text = item.description
 
 func _on_button_pressed() -> void:

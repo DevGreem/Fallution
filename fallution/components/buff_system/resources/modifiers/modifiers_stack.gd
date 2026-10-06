@@ -19,6 +19,19 @@ func add_modifier(modifier: StatModifier) -> bool:
 	modifiers.append(modifier)
 	return true
 
+func remove_modifier(modifier: StatModifier) -> bool:
+	
+	var idx := modifiers.find(modifier)
+	
+	if idx == -1:
+		return false
+	
+	remove_modifier_at(idx)
+	return true
+	
+func remove_modifier_at(idx: int) -> void:
+	modifiers.remove_at(idx)
+
 func get_modified_value(raw_value: float) -> float:
 	
 	var result := raw_value
@@ -26,6 +39,6 @@ func get_modified_value(raw_value: float) -> float:
 	for modifier: StatModifier in modifiers:
 		
 		if modifier.can_apply():
-			result = modifier.get_value_modified(raw_value)
+			result = modifier.get_value_modified(result)
 	
 	return result

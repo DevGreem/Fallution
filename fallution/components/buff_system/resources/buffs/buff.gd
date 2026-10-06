@@ -8,10 +8,7 @@ signal consumed()
 signal consumed_time()
 signal consumed_uses()
 
-@export var ID: StringName:
-	set(value):
-		if Engine.is_editor_hint():
-			ID = value
+@export var ID: StringName
 
 @export var effects: Array[BuffEffect] = []
 
@@ -82,4 +79,4 @@ func _consume() -> void:
 	consumed.emit()
 
 func _to_string() -> String:
-	return "Buff[{0}]" % [ID]
+	return "Buff[%s]" % [ID]
