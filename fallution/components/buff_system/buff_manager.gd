@@ -42,12 +42,15 @@ func _on_consumed_buff(buff: Buff) -> void:
 	)
 	context.is_consumed = true
 	
-	buff.remove(context)
+	_buffs[buff.ID].remove_instance(buff, context)
 
 func add_buff(buff: Buff, context: BuffContext = null) -> void:
 	
 	if not buff:
 		return
+	
+	if not buff.has_started:
+		buff.reset_counters()
 	
 	buff.consumed.connect(_on_consumed_buff.bind(buff), ConnectFlags.CONNECT_ONE_SHOT)
 	
@@ -112,6 +115,7 @@ func clear_buff_id(id: String, context: BuffContext = null) -> bool:
 		)
 	
 	_buffs[id].clear(context)
+	_buffs.erase(id)
 	return true
 
 #endregion

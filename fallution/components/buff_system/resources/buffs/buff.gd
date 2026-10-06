@@ -17,35 +17,37 @@ signal consumed_uses()
 
 ## -1.0 = Infinity
 @export var default_time: float = -1.0
-var current_time: float:
+var current_time: float = -1.0:
 	set(value):
-		
-		if default_time == -1.0:
-			return
 		
 		current_time = value
 		
-		if current_time <= 0:
+		if current_time <= 0 and has_started:
 			consumed_time.emit()
 			_consume()
 
 ## -1 = Infinity
 @export var default_uses: int = -1
-var current_uses: int:
+var current_uses: int = -1:
 	set(value):
-		
-		if default_uses == -1:
-			return
-		
 		current_uses = value
 		
-		if current_uses <= 0:
+		if current_uses <= 0 and has_started:
 			consumed_uses.emit()
 			_consume()
 
+var _has_started := false
+var has_started: bool:
+	get: return _has_started
+	set(value): return
+
 func _init() -> void:
+	reset_counters()
+
+func reset_counters() -> void:
 	current_time = default_time
 	current_uses = default_uses
+	_has_started = true
 
 func process(delta: float) -> void:
 	
