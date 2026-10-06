@@ -7,6 +7,7 @@ class_name LivePalette
 const INTERACTIONS := Color(0.8352941, 0.8039216, 0.007843138, 0.41960785)
 const INTERACTORS := Color(0.8901961, 0.5647059, 0.007843138, 0.41960785)
 const SPAWN := Color(0.9529412, 0.26666668, 0, 0.41960785)
+const COLLISIONS := Color(0.13333334, 0.4509804, 1, 0.41960785)
 
 ## Palette name -> color, for lookups by a name held in a variable.
 ## Prefer the constants above: they are checked at compile time.
@@ -14,6 +15,7 @@ const BY_NAME := {
 	"Interactions": INTERACTIONS,
 	"Interactors": INTERACTORS,
 	"Spawn": SPAWN,
+	"Collisions": COLLISIONS,
 }
 
 ## Variant name -> {name -> color}, for reading a variant you are not on.
@@ -22,6 +24,7 @@ const VARIANTS := {
 		"Interactions": Color(0.8352941, 0.8039216, 0.007843138, 0.41960785),
 		"Interactors": Color(0.8901961, 0.5647059, 0.007843138, 0.41960785),
 		"Spawn": Color(0.9529412, 0.26666668, 0, 0.41960785),
+		"Collisions": Color(0.13333334, 0.4509804, 1, 0.41960785),
 	},
 }
 

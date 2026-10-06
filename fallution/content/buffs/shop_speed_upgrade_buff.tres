@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://c2tx0v6ha0j36"
 script = ExtResource("4_bd03r")
 type = SubResource("Resource_2dt17")
 mode = SubResource("Resource_38an8")
-value = 1.1
+value = 0.1
 metadata/_custom_type_script = "uid://bxks1ugpasenc"
 
 [sub_resource type="Resource" id="Resource_mxis2"]

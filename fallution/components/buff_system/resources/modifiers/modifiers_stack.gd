@@ -46,7 +46,7 @@ func get_modified_value(raw_value: float) -> float:
 	for modifier: StatModifier in modifiers:
 		
 		if modifier.can_apply():
-			result = modifier.get_value_modified(result)
+			result = modifier.get_value_modified(raw_value, result)
 	
 	_cache[raw_value] = result
 	return result

@@ -9,8 +9,11 @@
 radius = 3.0
 height = 14.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
-size = Vector2(5, 1)
+[sub_resource type="CircleShape2D" id="CircleShape2D_lllg3"]
+radius = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g04yl"]
+size = Vector2(3, 1)
 
 [node name="TestLeaf" type="Node2D" unique_id=1958364646 node_paths=PackedStringArray("get_leaf_interaction") groups=["entities", "leafs"]]
 script = ExtResource("1_dqrru")
@@ -41,7 +44,7 @@ interact_name = "get_leaf"
 metadata/_custom_type_script = "uid://dk0pi828tayhh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeafBody/GetLeafInteractionArea" unique_id=570095176]
-position = Vector2(0, -2)
+position = Vector2(0, -2.5)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_g04yl")
 debug_color = Color(0.8352941, 0.8039216, 0.007843138, 0.41960785)
@@ -57,15 +60,32 @@ gravity_scale = 0.1
 position = Vector2(6.5, -1.5)
 texture = ExtResource("4_dqrru")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeafTail" unique_id=1164327711]
-position = Vector2(6.5, -1.5)
-shape = SubResource("RectangleShape2D_obaep")
-debug_color = Color(0.9529412, 0.26666668, 0, 0.41960785)
+[node name="RightCircle" type="CollisionShape2D" parent="LeafTail" unique_id=1164327711]
+position = Vector2(8.5, -1.5)
+shape = SubResource("CircleShape2D_lllg3")
+debug_color = Color(0.13333334, 0.4509804, 1, 0.41960785)
 metadata/_live_palette_bindings = {
-"debug_color": "53wvu"
+"debug_color": "bhjjj"
+}
+
+[node name="LeftCircle" type="CollisionShape2D" parent="LeafTail" unique_id=1978761191]
+position = Vector2(4.5, -1.5)
+shape = SubResource("CircleShape2D_lllg3")
+debug_color = Color(0.13333334, 0.4509804, 1, 0.41960785)
+metadata/_live_palette_bindings = {
+"debug_color": "bhjjj"
+}
+
+[node name="Tail" type="CollisionShape2D" parent="LeafTail" unique_id=1015959451]
+position = Vector2(6.5, -1.5)
+shape = SubResource("RectangleShape2D_g04yl")
+debug_color = Color(0.13333334, 0.4509804, 1, 0.41960785)
+metadata/_live_palette_bindings = {
+"debug_color": "bhjjj"
 }
 
 [node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1371497650]
+visible = false
 position = Vector2(3.5, -1.5)
 node_a = NodePath("../LeafBody")
 node_b = NodePath("../LeafTail")
