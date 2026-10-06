@@ -10,22 +10,11 @@ func get_buffs() -> Array[Buff]:
 func use_buff_at(idx: int, times: float = 1.0) -> void:
 	_buffs[idx].use(times)
 
-func _connect_buff(buff: Buff) -> void:
-	
-	var function: Callable = _on_complete_used_buff.bind(buff)
-	
-	if not buff.completed_used.is_connected(function):
-		buff.completed_used.connect(function)
-
 func append_buff(buff: Buff) -> void:
 	_buffs.append(buff)
-	_connect_buff(buff)
 
 func append_buffs(buffs: Array[Buff]) -> void:
 	_buffs.append_array(buffs)
-	
-	for buff: Buff in buffs:
-		_connect_buff(buff)
 
 func order_insert_buff(buff: Buff) -> void:
 	

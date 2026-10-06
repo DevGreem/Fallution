@@ -24,7 +24,7 @@ func _on_remove(context: BuffContext) -> void:
 	print("Stat buff removed from ", context.target, ": ", self)
 
 func _to_string() -> String:
-	return "StatBuffEffect[{0}]" % [stat_modifier]
+	return "StatBuffEffect[%s]" % [stat_modifier]
 
 func _apply_to_buff_manager(buff_manager: BuffManager) -> void:
 	buff_manager.add_modifier(stat_modifier)

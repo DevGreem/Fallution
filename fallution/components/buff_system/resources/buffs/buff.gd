@@ -49,7 +49,7 @@ func _init() -> void:
 
 func process(delta: float) -> void:
 	
-	if current_time == -1.0:
+	if default_time == -1.0:
 		return
 	
 	current_time -= delta

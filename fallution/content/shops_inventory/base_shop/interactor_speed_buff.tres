@@ -33,6 +33,7 @@ metadata/_custom_type_script = "uid://ea0y7dnjdyql"
 script = ExtResource("5_vv5so")
 ID = &"shop_speed_buff"
 effects = Array[ExtResource("2_sj522")]([SubResource("Resource_tdurv")])
+default_time = 2.0
 metadata/_custom_type_script = "uid://j8qyc1jkx4u6"
 
 [resource]

@@ -20,6 +20,11 @@ func _ready() -> void:
 		for modifier: StatModifier in _inspector_modifiers:
 			add_modifier(modifier)
 
+func _process(delta: float) -> void:
+	
+	for buff_id: StringName in _buffs:
+		_buffs[buff_id].process_instances(delta)
+
 #region Buffs
 
 func get_buffs() -> Dictionary[StringName, ActiveBuff]:
@@ -28,10 +33,23 @@ func get_buffs() -> Dictionary[StringName, ActiveBuff]:
 func get_buff_by_id(id: StringName) -> ActiveBuff:
 	return _buffs[id]
 
+func _on_consumed_buff(buff: Buff) -> void:
+	
+	var context := BuffContext.new(
+		self,
+		self,
+		buff
+	)
+	context.is_consumed = true
+	
+	buff.remove(context)
+
 func add_buff(buff: Buff, context: BuffContext = null) -> void:
 	
 	if not buff:
 		return
+	
+	buff.consumed.connect(_on_consumed_buff.bind(buff), ConnectFlags.CONNECT_ONE_SHOT)
 	
 	var buff_id: StringName = buff.ID
 	

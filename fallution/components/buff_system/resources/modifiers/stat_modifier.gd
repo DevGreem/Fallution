@@ -12,3 +12,6 @@ func can_apply() -> bool:
 
 func get_value_modified(raw_value: float) -> float:
 	return mode.execute_buff(raw_value, value)
+
+func _to_string() -> String:
+	return "StatModifier[%s,%s,%s]" % [type.get_id(), value, priority]
