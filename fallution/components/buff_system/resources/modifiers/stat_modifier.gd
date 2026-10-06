@@ -10,7 +10,7 @@ class_name StatModifier
 func can_apply() -> bool:
 	return true
 
-func get_value_modified(raw_value: float) -> float:
+func get_value_modified(raw_value: float, modified_value: float = raw_value) -> float:
 	return mode.execute_buff(raw_value, value)
 
 func _to_string() -> String:
