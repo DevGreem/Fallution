@@ -3,18 +3,17 @@ extends Resource
 
 class_name ItemResource
 
-@export var id: StringName:
+@export var _ID: StringName
+var id: StringName:
+	get: return _ID
 	set(value):
 		
-		if not Engine.is_editor_hint():
-			push_error(
-				"You can't change the ItemResource.id of an item on runtime!",
-				" Resource trying to be changed: ",
-				self
-			)
-			return
-		
-		id = value
+		push_error(
+			"You can't change the ItemResource.id of an item on runtime!",
+			" Resource trying to be changed: ",
+			self
+		)
+		return
 
 @export var name: String
 @export_multiline() var description: String

@@ -4,7 +4,11 @@ class_name ActiveBuff
 
 var instances: Array[Buff] = []
 
-func add_instance(buff: Buff) -> bool:
+func process_instances(delta: float) -> void:
+	for buff: Buff in instances:
+		buff.process(delta)
+
+func add_instance(buff: Buff, context: BuffContext) -> bool:
 	
 	if not instances.is_empty():
 		
@@ -12,9 +16,10 @@ func add_instance(buff: Buff) -> bool:
 			return false
 	
 	instances.append(buff)
+	buff.apply(context)
 	return true
 
-func remove_instance(buff: Buff) -> bool:
+func remove_instance(buff: Buff, context: BuffContext) -> bool:
 	
 	var idx := instances.find(buff)
 	
@@ -22,10 +27,19 @@ func remove_instance(buff: Buff) -> bool:
 		return false
 	
 	instances.remove_at(idx)
+	buff.remove(context)
 	return true
 
-func remove_instance_at(idx: int) -> void:
-	instances.remove_at(idx)
+func remove_instance_at(idx: int, context: BuffContext) -> void:
+	var buff: Buff = instances.pop_at(idx)
+	buff.remove(context)
+
+func clear(context: BuffContext) -> void:
+	
+	for i: int in range(len(instances)):
+		instances[i].remove(context)
+	
+	instances.clear()
 
 func get_buff_id() -> StringName:
 	

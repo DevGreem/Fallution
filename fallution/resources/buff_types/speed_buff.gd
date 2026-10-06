@@ -1,4 +1,4 @@
-extends BuffType
+extends ModifierType
 
 class_name SpeedBuff
 

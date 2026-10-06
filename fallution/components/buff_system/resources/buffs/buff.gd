@@ -47,6 +47,18 @@ func _init() -> void:
 	current_time = default_time
 	current_uses = default_uses
 
+func process(delta: float) -> void:
+	
+	if current_time == -1.0:
+		return
+	
+	current_time -= delta
+	
+	if current_time <= 0.0:
+		consumed_time.emit()
+		_consume()
+		return
+
 func has_limit() -> bool:
 	return default_uses != -1.0 or default_time != -1.0
 
