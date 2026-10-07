@@ -4,30 +4,37 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_53wvu"]
 
-[node name="ShopItem" type="HBoxContainer" unique_id=551820757 node_paths=PackedStringArray("texture", "title", "description", "buy_button")]
+[node name="ShopItem" type="HBoxContainer" unique_id=551820757 node_paths=PackedStringArray("_texture", "_title", "_description", "_cost_label")]
 custom_minimum_size = Vector2(0, 16)
 custom_maximum_size = Vector2(-1, 16)
+anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 16.0
 grow_horizontal = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 2
 script = ExtResource("1_tc3di")
-texture = NodePath("TextureRect")
-title = NodePath("VBoxContainer/Title")
-description = NodePath("VBoxContainer/Description")
-buy_button = NodePath("Button")
+_texture = NodePath("TextureRect")
+_title = NodePath("HBoxContainer/VBoxContainer/Title")
+_description = NodePath("HBoxContainer/VBoxContainer/Description")
+_cost_label = NodePath("HBoxContainer/HBoxContainer/CostLabel")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1161005985]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_53wvu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1936452627]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1039654239]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1936452627]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Title" type="Label" parent="VBoxContainer" unique_id=566107121]
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=566107121]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -36,12 +43,24 @@ text = "Test Text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="VBoxContainer" unique_id=2000285105]
+[node name="Description" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=2000285105]
 layout_mode = 2
 theme_override_font_sizes/font_size = 3
 text = "Test Description"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=717119129]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CurrencySymbol" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=1475159521]
+layout_mode = 2
+text = "$"
+
+[node name="CostLabel" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=605110386]
+layout_mode = 2
+text = "0"
 
 [node name="Button" type="Button" parent="." unique_id=548234059]
 layout_mode = 2

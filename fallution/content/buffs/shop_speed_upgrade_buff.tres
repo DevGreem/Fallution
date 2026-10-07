@@ -43,4 +43,5 @@ buff = SubResource("Resource_t4n7x")
 _custom_buff_title = "Speed Upgrade"
 _buff_description = "Upgrade your speed (+10%)"
 _buff_icon = SubResource("PlaceholderTexture2D_b0psh")
+value = 100
 metadata/_custom_type_script = "uid://ds0efnvh67pri"
