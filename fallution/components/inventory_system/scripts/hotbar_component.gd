@@ -58,6 +58,31 @@ func add_item(pos: int, item: InventoryItemData) -> bool:
 	
 	return true
 
+func replace_item(pos: int, item: InventoryItemData) -> InventoryItemData:
+	
+	var getted := get_item(pos)
+	
+	if not getted:
+		_set_item(pos, item)
+		return null
+	
+	if item:
+		if getted.item_data.id == item.item_data.id:
+			getted.stack(item)
+			return null
+			
+	var temp := getted.duplicate(true)
+	_set_item(pos, item)
+	return temp
+	
+
+func remove_item(pos: int) -> InventoryItemData:
+	
+	var getted := get_item(pos).duplicate(true)
+	_set_item(pos, null)
+	
+	return getted
+
 func _set_item(pos: int, new_value: InventoryItemData) -> bool:
 	
 	_items.set(pos, new_value)
@@ -75,6 +100,8 @@ func _update_items_size() -> void:
 		
 		for i: int in range(cells+1, _items.size()):
 			var item := _items[i]
+			
+			
 			
 			#! Here, I need to add the logic so that when an object is deleted, the "drop" action is executed if it has one.
 	

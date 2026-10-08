@@ -20,7 +20,7 @@ signal stack_finished
 			return
 		_inspector_actions = value
 
-@export var _stack_method: ItemStackMethod
+@export var _stack_method: ItemStackMethod = DefaultItemStackMethod.new()
 
 @export_storage
 var actions: Dictionary[StringName, ItemAction] = {}
