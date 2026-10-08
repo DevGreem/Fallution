@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bp5b37xnifyye" path="res://components/move_system_inputs/move_input_component_1d.gd" id="5_w342o"]
 [ext_resource type="Script" uid="uid://6sdqjg3mljwl" path="res://components/buff_system/buff_manager.gd" id="8_5bf07"]
 [ext_resource type="Script" uid="uid://cquksumofu51y" path="res://scripts/inputs/interact_input_component_2d.gd" id="8_m71c2"]
+[ext_resource type="Script" uid="uid://lasrsdufc7eb" path="res://components/move_system/follow_mouse_component_2d.gd" id="9_3ekl5"]
 [ext_resource type="Script" uid="uid://b4434pm5gmtrr" path="res://components/shop_system/money_bag_component.gd" id="9_w342o"]
 [ext_resource type="Script" uid="uid://c3dkm3li8244q" path="res://components/interaction_system/interact_component_2d.gd" id="10_pk271"]
 
@@ -75,7 +76,17 @@ interact_component = NodePath("../../InteractComponent2D")
 metadata/_custom_type_script = "uid://cquksumofu51y"
 
 [node name="Hand" type="Node2D" parent="." unique_id=1650164683]
-position = Vector2(6, 3)
+position = Vector2(0, 3)
+
+[node name="FollowMouseComponent2D" type="Node2D" parent="Hand" unique_id=1535567268 node_paths=PackedStringArray("actor")]
+script = ExtResource("9_3ekl5")
+actor = NodePath("..")
+max_distance = Vector2(10, 5)
+color = Color(0.5686275, 0.9411765, 1, 0.41960785)
+metadata/_custom_type_script = "uid://lasrsdufc7eb"
+metadata/_live_palette_bindings = {
+"color": "p8lu4"
+}
 
 [node name="BuffManager" type="Node" parent="." unique_id=966431289]
 script = ExtResource("8_5bf07")
@@ -89,12 +100,12 @@ metadata/_custom_type_script = "uid://b4434pm5gmtrr"
 [node name="InteractComponent2D" type="Node2D" parent="." unique_id=190632250 node_paths=PackedStringArray("actor", "interact_area")]
 script = ExtResource("10_pk271")
 actor = NodePath("..")
-interact_area = NodePath("../Area2D")
+interact_area = NodePath("../InteractionArea2D")
 metadata/_custom_type_script = "uid://c3dkm3li8244q"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1960274172]
+[node name="InteractionArea2D" type="Area2D" parent="." unique_id=1960274172]
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=857194652]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D" unique_id=857194652]
 shape = SubResource("CircleShape2D_obaep")

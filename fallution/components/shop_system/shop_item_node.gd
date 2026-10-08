@@ -47,7 +47,6 @@ func _update_data() -> void:
 	_set_text(_cost_label, str(item.value))
 	
 	_texture.texture = item.icon
-	
 
 func _on_button_pressed() -> void:
 	

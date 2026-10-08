@@ -18,19 +18,5 @@ var id: StringName:
 @export var name: String
 @export_multiline() var description: String
 
-@export var _inspector_actions: Array[ItemAction] = []:
-	set(value):
-		
-		if not Engine.is_editor_hint():
-			return
-		_inspector_actions = value
-
-var actions: Dictionary[StringName, ItemAction] = {}
-
-func _init() -> void:
-	
-	for action: ItemAction in _inspector_actions:
-		actions[action.get_id()] = action
-
 func _to_string() -> String:
 	return "[id={0},name={1},instance_id={2}]" % [id, name, get_instance_id()]

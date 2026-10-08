@@ -1,4 +1,6 @@
-extends Node
+@icon("res://addons/at-icons/node2d/cursor.svg")
+@tool
+extends Node2D
 
 class_name FollowMouseComponent2D
 
@@ -11,13 +13,21 @@ class_name FollowMouseComponent2D
 			actor_original_position = actor.position
 
 ## Max distance since the actor initial position
-@export var max_distance := -Vector2.ONE
+@export var max_distance := -Vector2.ONE:
+	set(value):
+		max_distance = value
+		queue_redraw()
+
+@export var color := Color.from_rgba8(255, 255, 0, 107):
+	set(value):
+		color = value
+		queue_redraw()
 
 var actor_original_position: Vector2
 
 func _physics_process(_delta: float) -> void:
 	
-	if not actor:
+	if not actor or Engine.is_editor_hint():
 		return
 	
 	var mouse_pos := actor.get_global_mouse_position()
@@ -36,3 +46,18 @@ func _physics_process(_delta: float) -> void:
 	
 	target_pos = actor_original_position + offset
 	actor.position = target_pos
+
+func _draw() -> void:
+	
+	if not Engine.is_editor_hint():
+		return
+	
+	if not actor or max_distance == -Vector2.ONE:
+		return
+	
+	var center := to_local(actor.global_position)
+	
+	draw_rect(
+		Rect2(center - max_distance, max_distance * 2),
+		color
+	)
