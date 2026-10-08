@@ -16,7 +16,10 @@ class Context:
 @export var show_in_gui: bool = true
 
 ## -1.0 = No cooldown
-@export var cooldown: float = -1.0
+@export var default_cooldown: float = -1.0
+
+var cooldown: float
+var has_started: bool = false
 
 var id: StringName:
 	get = get_id
@@ -30,11 +33,28 @@ func get_id() -> StringName
 @abstract
 func get_action_title() -> String
 
+func start() -> void:
+	
+	if has_started:
+		return
+	
+	has_started = true
+	cooldown = default_cooldown
+
 func process(delta: float) -> void:
-	cooldown -= delta
+	
+	if default_cooldown == -1.0:
+		return
+	
+	if cooldown > 0.0:
+		cooldown -= delta
 
 @warning_ignore("unused_parameter")
 func can_execute(context: Context) -> bool:
+	
+	if cooldown > 0.0:
+		return false
+	
 	return true
 
 func execute(context: Context) -> Variant:

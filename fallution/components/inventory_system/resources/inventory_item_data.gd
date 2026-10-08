@@ -2,6 +2,8 @@ extends Resource
 
 class_name InventoryItemData
 
+signal stack_finished
+
 @export var item_data: ItemResource
 
 @export_group("Inventory Data")
@@ -18,7 +20,18 @@ class_name InventoryItemData
 			return
 		_inspector_actions = value
 
+@export var _stack_method: ItemStackMethod
+
+@export_storage
 var actions: Dictionary[StringName, ItemAction] = {}
+
+@export_storage
+var current_stack: int = 1:
+	set(value):
+		current_stack = value
+		
+		if current_stack == 0:
+			stack_finished.emit()
 
 func _init() -> void:
 	
@@ -30,3 +43,6 @@ func _init() -> void:
 func process_actions(delta: float) -> void:
 	for id: StringName in actions:
 		actions[id].process(delta)
+
+func stack(item: InventoryItemData) -> void:
+	_stack_method.stack(self, item)
