@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bcl4gau3itmab"]
+
+[ext_resource type="Script" uid="uid://dgj24c75o7jnk" path="res://components/item_system/resources/item_resource.gd" id="1_yq2im"]
+
+[resource]
+script = ExtResource("1_yq2im")
+_ID = &"hand"
+name = "Hand"
+description = "A simple hand"
+metadata/_custom_type_script = "uid://dgj24c75o7jnk"

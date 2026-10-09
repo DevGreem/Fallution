@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="InventoryItemData" format=3 uid="uid://crvcwrwlcivc3"]
+
+[ext_resource type="Script" uid="uid://b1xfsscktlsnn" path="res://components/inventory_system/resources/item_action.gd" id="1_e68im"]
+[ext_resource type="Resource" uid="uid://bcl4gau3itmab" path="res://content/items/usables/hand/hand_info.tres" id="2_b2xh7"]
+[ext_resource type="Script" uid="uid://q2qgaf4g7e6m" path="res://resources/item_actions/invoke_node_2d_item_action.gd" id="2_dta71"]
+[ext_resource type="PackedScene" uid="uid://b8p5j2565452r" path="res://content/items/usables/hand/hand.tscn" id="2_feeru"]
+[ext_resource type="Script" uid="uid://xf2cmknbhe6x" path="res://components/inventory_system/resources/inventory_item_data.gd" id="2_xawph"]
+[ext_resource type="Script" uid="uid://by50nfdrxjnfb" path="res://components/inventory_system/default_stack_methods/default_item_stack_method.gd" id="4_4esk5"]
+
+[sub_resource type="Resource" id="Resource_53wvu"]
+script = ExtResource("2_dta71")
+item_node = ExtResource("2_feeru")
+show_in_gui = false
+metadata/_custom_type_script = "uid://q2qgaf4g7e6m"
+
+[sub_resource type="Resource" id="Resource_p8lu4"]
+script = ExtResource("4_4esk5")
+metadata/_custom_type_script = "uid://by50nfdrxjnfb"
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b2xh7"]
+size = Vector2(8, 8)
+
+[resource]
+script = ExtResource("2_xawph")
+item_data = ExtResource("2_b2xh7")
+icons = Array[Texture2D]([SubResource("PlaceholderTexture2D_b2xh7")])
+_inspector_actions = Array[ExtResource("1_e68im")]([SubResource("Resource_53wvu")])
+_stack_method = SubResource("Resource_p8lu4")
+metadata/_custom_type_script = "uid://xf2cmknbhe6x"

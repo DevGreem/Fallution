@@ -1,4 +1,4 @@
-@abstract
+
 extends Resource
 
 class_name ItemResource
@@ -19,4 +19,4 @@ var id: StringName:
 @export_multiline() var description: String
 
 func _to_string() -> String:
-	return "[id={0},name={1},instance_id={2}]" % [id, name, get_instance_id()]
+	return "ItemResource[id=%s,name=%s,instance_id=%s]" % [id, name, get_instance_id()]

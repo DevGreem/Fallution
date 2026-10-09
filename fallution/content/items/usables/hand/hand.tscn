@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b8p5j2565452r"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_obaep"]
+size = Vector2(8, 8)
+
+[node name="Hand" type="Node2D" unique_id=1915105738]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1875494643]
+texture = SubResource("PlaceholderTexture2D_obaep")

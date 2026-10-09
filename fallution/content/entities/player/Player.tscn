@@ -10,9 +10,12 @@
 [ext_resource type="Script" uid="uid://6sdqjg3mljwl" path="res://components/buff_system/buff_manager.gd" id="8_5bf07"]
 [ext_resource type="Script" uid="uid://cquksumofu51y" path="res://scripts/inputs/interact_input_component_2d.gd" id="8_m71c2"]
 [ext_resource type="Script" uid="uid://lasrsdufc7eb" path="res://components/move_system/follow_mouse_component_2d.gd" id="9_3ekl5"]
+[ext_resource type="Script" uid="uid://dpxeecp4pjl1j" path="res://scripts/item_container_2d.gd" id="9_78eti"]
 [ext_resource type="Script" uid="uid://b4434pm5gmtrr" path="res://components/shop_system/money_bag_component.gd" id="9_w342o"]
 [ext_resource type="Script" uid="uid://c3dkm3li8244q" path="res://components/interaction_system/interact_component_2d.gd" id="10_pk271"]
 [ext_resource type="Script" uid="uid://nbsf50df6jsm" path="res://components/inventory_system/scripts/hotbar_component.gd" id="13_noxqf"]
+[ext_resource type="Script" uid="uid://xf2cmknbhe6x" path="res://components/inventory_system/resources/inventory_item_data.gd" id="14_noxqf"]
+[ext_resource type="Resource" uid="uid://crvcwrwlcivc3" path="res://content/items/usables/hand/inventory_hand.tres" id="16_64mh4"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_obaep"]
 size = Vector2(12, 24)
@@ -78,6 +81,7 @@ metadata/_custom_type_script = "uid://cquksumofu51y"
 
 [node name="Hand" type="Node2D" parent="." unique_id=1650164683]
 position = Vector2(0, 3)
+script = ExtResource("9_78eti")
 
 [node name="FollowMouseComponent2D" type="Node2D" parent="Hand" unique_id=1535567268 node_paths=PackedStringArray("actor")]
 script = ExtResource("9_3ekl5")
@@ -115,4 +119,6 @@ shape = SubResource("CircleShape2D_obaep")
 script = ExtResource("13_noxqf")
 actor = NodePath("..")
 slots = 3
+_items = Array[ExtResource("14_noxqf")]([null, null, null])
+default_item = ExtResource("16_64mh4")
 metadata/_custom_type_script = "uid://nbsf50df6jsm"
