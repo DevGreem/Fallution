@@ -9,11 +9,14 @@ signal resized
 @export var slots: int = 1:
 	set(value):
 		
+		value = max(value, 0)
+		
 		if slots == value:
 			return
 		
-		slots = max(value, 0)
+		slots = value
 		_update_items_size()
+		notify_property_list_changed()
 
 @export var _items: Array[InventoryItemData] = []:
 	set(value):
@@ -23,7 +26,15 @@ signal resized
 @export var default_item: InventoryItemData = null
 
 func _process(delta: float) -> void:
+	
+	if Engine.is_editor_hint():
+		return
+	
 	for item: InventoryItemData in _items:
+		
+		if not item:
+			continue
+		
 		item.process_actions(delta)
 
 ## -1 = No free position
@@ -40,7 +51,7 @@ func get_item(pos: int) -> InventoryItemData:
 	
 	var value: InventoryItemData = _items.get(pos)
 	
-	if not is_instance_valid(value):
+	if not is_instance_valid(value) and default_item:
 		value = default_item.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	
 	item_getted.emit(pos, value)
@@ -60,7 +71,6 @@ func add_item(pos: int, item: InventoryItemData) -> bool:
 	if not getted:
 		_set_item(pos, item)
 	else:
-		getted.current_stack += item.current_stack
 		getted.stack(item)
 	
 	return true
@@ -73,19 +83,16 @@ func replace_item(pos: int, item: InventoryItemData) -> InventoryItemData:
 		_set_item(pos, item)
 		return null
 	
-	if item:
-		if getted.item_data.id == item.item_data.id:
-			getted.stack(item)
-			return null
-			
 	var temp := getted.duplicate(true)
 	_set_item(pos, item)
 	return temp
-	
 
 func remove_item(pos: int) -> InventoryItemData:
 	
-	var getted := get_item(pos).duplicate(true)
+	var getted := get_item(pos)
+	
+	if getted:
+		getted = getted.duplicate(true)
 	_set_item(pos, null)
 	
 	return getted
@@ -105,12 +112,26 @@ func _update_items_size() -> void:
 	if slots < _items.size():
 		push_warning("Cells cantity changed, Now it is smaller than the size of _items!")
 		
-		for i: int in range(slots, _items.size()):
-			var item := _items[i]
+		for i: int in range(_items.size(), slots, -1):
+			var item := _items[i-1]
 			
+			if not item:
+				remove_item(i-1)
+				continue
 			
+			var action_id := DropItemAction.new().id
 			
-			#! Here, I need to add the logic so that when an object is deleted, the "drop" action is executed if it has one.
+			var context := ItemAction.Context.new(
+				item,
+				self,
+				actor
+			)
+			
+			if item.actions.has(action_id):
+				item.actions[action_id].execute(context)
+			
+			remove_item(i-1)
 	
 	_items.resize(slots)
+	print("Resized _items array from hotbar component")
 	resized.emit()

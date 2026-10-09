@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://lasrsdufc7eb" path="res://components/move_system/follow_mouse_component_2d.gd" id="9_3ekl5"]
 [ext_resource type="Script" uid="uid://b4434pm5gmtrr" path="res://components/shop_system/money_bag_component.gd" id="9_w342o"]
 [ext_resource type="Script" uid="uid://c3dkm3li8244q" path="res://components/interaction_system/interact_component_2d.gd" id="10_pk271"]
+[ext_resource type="Script" uid="uid://nbsf50df6jsm" path="res://components/inventory_system/scripts/hotbar_component.gd" id="13_noxqf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_obaep"]
 size = Vector2(12, 24)
@@ -109,3 +110,9 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D" unique_id=857194652]
 shape = SubResource("CircleShape2D_obaep")
+
+[node name="HotbarComponent" type="Node" parent="." unique_id=326109691 node_paths=PackedStringArray("actor")]
+script = ExtResource("13_noxqf")
+actor = NodePath("..")
+slots = 3
+metadata/_custom_type_script = "uid://nbsf50df6jsm"
