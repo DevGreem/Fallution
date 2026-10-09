@@ -17,7 +17,7 @@ class_name HotbarComponent
 		_items = value
 		_update_items_size()
 
-@export var crash_on_invalid_position: bool = false
+@export var default_item: InventoryItemData = null
 
 func _process(delta: float) -> void:
 	for item: InventoryItemData in _items:
@@ -36,6 +36,10 @@ func get_first_free_position() -> int:
 func get_item(pos: int) -> InventoryItemData:
 	
 	var value: InventoryItemData = _items.get(pos)
+	
+	if not is_instance_valid(value):
+		value = default_item.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	
 	item_getted.emit(pos, value)
 	
 	return value

@@ -62,6 +62,8 @@ func execute(context: Context) -> Variant:
 	if not can_execute(context):
 		return
 	
+	cooldown = default_cooldown
+	
 	return _execute(context)
 
 @abstract

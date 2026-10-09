@@ -1,11 +1,10 @@
 @abstract
 extends ItemAction
 
-class_name DropItemAction
+class_name UnequipItemAction
 
 func get_id() -> StringName:
-	return &"drop"
+	return "unequip"
 
 func get_action_title() -> String:
-	return "Drop"
-	
+	return "Unequip"
