@@ -105,7 +105,7 @@ func _update_items_size() -> void:
 	if slots < _items.size():
 		push_warning("Cells cantity changed, Now it is smaller than the size of _items!")
 		
-		for i: int in range(slots+1, _items.size()):
+		for i: int in range(slots, _items.size()):
 			var item := _items[i]
 			
 			

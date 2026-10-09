@@ -36,9 +36,16 @@ signal selected_slot_changed(new: int)
 
 @export var slots_container: Container
 
-@export_group("Testing")
+@export_group("Preview")
 
-@export var _slots_cantity: int = 0
+@export var _slots_cantity: int = 0:
+	set(value):
+		
+		if _slots_cantity == value:
+			return
+		
+		_slots_cantity = value
+		_on_resized()
 
 # Add InventorySlot here
 var slots: Array[InventorySlot] = []
@@ -56,6 +63,9 @@ func _init_hotbar() -> void:
 
 func _connect_hotbar() -> void:
 	
+	if Engine.is_editor_hint():
+		return
+	
 	if not hotbar_component:
 		return
 	
@@ -68,12 +78,40 @@ func _connect_hotbar() -> void:
 func _on_item_setted(pos: int, value: InventoryItemData) -> void:
 	pass
 
-func _on_resized() -> void:
-	pass
+func _add_slot() -> void:
 	
+	var slot: InventorySlot = slot_scene.instantiate()
+	slots_container.add_child(slot)
+	slots.append(slot)
+
+func _on_resized() -> void:
+	
+	if not slots_container:
+		return
+	
+	if not hotbar_component and not Engine.is_editor_hint():
+		return
+	
+	var real_slots := slots_container.get_child_count()
+	var slots_cantity := hotbar_component.slots if not Engine.is_editor_hint() else _slots_cantity
+	
+	if slots_cantity == real_slots:
+		return
+	
+	if slots_cantity > real_slots:
+		for i: int in range(slots_cantity - real_slots):
+			_add_slot()
+		
+		return
+	
+	if slots_cantity < real_slots:
+		
+		for i: int in range(slots_cantity, real_slots):
+			_clear_slot(i)
 
 func _clear_slot(idx: int) -> void:
 	slots_container.get_child(idx).queue_free()
+	slots.remove_at(idx)
 
 func _clear_slots() -> void:
 	
