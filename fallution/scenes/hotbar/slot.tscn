@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dltxi7wjyipyf"]
+
+[ext_resource type="Script" uid="uid://cgl07xkajj74d" path="res://scenes/hotbar/icon_inventory_slot.gd" id="1_3csin"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g04yl"]
+size = Vector2(8, 8)
+
+[node name="Slot" type="Control" unique_id=1222050846 node_paths=PackedStringArray("icon", "selection_border")]
+custom_minimum_size = Vector2(16, 16)
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3csin")
+icon = NodePath("PanelContainer/CenterContainer/TextureRect")
+selection_border = NodePath("TextureRect")
+metadata/_custom_type_script = "uid://dnxrlwwtpmtpm"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2012476206]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1607258077]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer" unique_id=194921876]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_g04yl")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1710256623]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cey0fkm0hbhgi"]
+
+[ext_resource type="Script" uid="uid://ceoc4aw2tsudc" path="res://components/inventory_system/ui/graphic_hotbar.gd" id="1_s257k"]
+[ext_resource type="PackedScene" uid="uid://dltxi7wjyipyf" path="res://scenes/hotbar/slot.tscn" id="2_pnopq"]
+
+[node name="Hotbar" type="Control" unique_id=1046293397]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_s257k")
+slot_scene = ExtResource("2_pnopq")
+metadata/_custom_type_script = "uid://ceoc4aw2tsudc"

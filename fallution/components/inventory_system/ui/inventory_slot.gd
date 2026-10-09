@@ -1,3 +1,4 @@
+@icon("res://addons/at-icons/control/box.svg")
 @tool
 extends Control
 
