@@ -3,13 +3,16 @@ extends BaseInventoryComponent
 
 class_name HotbarComponent
 
-@export var cells: int = 1:
+signal resized
+
+@export var actor: CanvasItem
+@export var slots: int = 1:
 	set(value):
 		
-		if cells == value:
+		if slots == value:
 			return
 		
-		cells = max(value, 0)
+		slots = max(value, 0)
 		_update_items_size()
 
 @export var _items: Array[InventoryItemData] = []:
@@ -96,17 +99,18 @@ func _set_item(pos: int, new_value: InventoryItemData) -> bool:
 
 func _update_items_size() -> void:
 	
-	if cells == _items.size():
+	if slots == _items.size():
 		return
 	
-	if cells < _items.size():
+	if slots < _items.size():
 		push_warning("Cells cantity changed, Now it is smaller than the size of _items!")
 		
-		for i: int in range(cells+1, _items.size()):
+		for i: int in range(slots+1, _items.size()):
 			var item := _items[i]
 			
 			
 			
 			#! Here, I need to add the logic so that when an object is deleted, the "drop" action is executed if it has one.
 	
-	_items.resize(cells)
+	_items.resize(slots)
+	resized.emit()
